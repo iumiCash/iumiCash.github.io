@@ -1,9 +1,13 @@
 # Create order
 
+## Create order API
+
 Creates an order
 
 `POST /api/v1/orders/`
 
+
+### Headers
 
 ???+ info "Header parameters"
 
@@ -17,6 +21,8 @@ Creates an order
     :    The media type. Required for operations with a request body. The value is `application/<format>`, where format is `json`.
 
 
+### Request
+
 ???+ info "Request body"
 
     `external_id` *string* **required**
@@ -29,6 +35,8 @@ Creates an order
     :    Callback/redirect URIs that used during payment process.
 
     
+### Response
+
 ???+ success "Response"
 
     `id` *UUID* **unique**
@@ -70,6 +78,8 @@ Creates an order
     
     :    An array of request-related HATEOAS links. For example, to complete payer approval, use `approve` link to redirect the payer.
 
+
+### Examples
 
 ???+ Examples
 

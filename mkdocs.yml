@@ -46,6 +46,11 @@ markdown_extensions:
   - toc:
       permalink: true
 
+plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+
 nav:
   - Getting started: index.md
   - Vendor registration: authentication/vendor_registration.md
