@@ -5,7 +5,7 @@ Creates an order
 `POST /api/v1/orders/`
 
 
-??? info "Header parameters"
+???+ info "Header parameters"
 
     `RequestId` *string*
     :    Idempotency key for request. See [idempotency] for more information.
@@ -17,7 +17,7 @@ Creates an order
     :    The media type. Required for operations with a request body. The value is `application/<format>`, where format is `json`.
 
 
-??? info "Request body"
+???+ info "Request body"
 
     `external_id` *string* **required**
     :    Unique identifier of your system. iumiCash will save this to this order, so you can further identify iumiCash order with your order instance.
@@ -71,7 +71,7 @@ Creates an order
     :    An array of request-related HATEOAS links. For example, to complete payer approval, use `approve` link to redirect the payer.
 
 
-??? Examples
+???+ Examples
 
     === "Request"
 
