@@ -91,7 +91,7 @@ Creates an order
         curl -v -X POST https://iumi.cash/api/v1/orders/ \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer <Access-Token>" \
-        -H "Request-Id: 7b92603e-77ed-4896-8e78-5dea2050476a" \
+        -H "RequestId: 7b92603e-77ed-4896-8e78-5dea2050476a" \
         -d ' \
         {
           "external_id": "123456",
