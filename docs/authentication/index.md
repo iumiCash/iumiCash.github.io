@@ -16,7 +16,7 @@ or somehow (we can send them to your email etc.).
     For more information see [vendor registration].
 
 
-## Generate access token
+## Generate access token API
 
 
 `POST /api/v1/oauth/token/`
@@ -53,12 +53,24 @@ or somehow (we can send them to your email etc.).
     `code` *string*
     :    Specification by OAuth 2.0 protocol. 
     
-         NOTE: Required when `grant_type` is `authorization_code`. See [code]() flow for details.
+    :   !!! info
+             Required when `grant_type` is `authorization_code`. See [code] flow for details.
         
     `refresh_token` *string*
     :    Specification by OAuth 2.0 protocol. 
     
-         NOTE: Required when `grant_type` is `refresh_token`. See [refresh token]() flow for details.
+    :   !!! info
+            Required when `grant_type` is `refresh_token`. See [refresh] flow for details.
+        
+    `state` *string*
+    :    Specification by OAuth 2.0 protocol. 
+    
+    :   ??? info
+            An opaque value used by the client to maintain state between the request and callback. 
+            The authorization server includes this value when redirecting the user-agent back to the client. 
+            The parameter SHOULD be used for preventing cross-site request forgery
+    
+         
 
     
 ### Response
@@ -96,7 +108,19 @@ or somehow (we can send them to your email etc.).
 
 ### Examples
 
-???+ "Examples"
+In this section shown different `authorization`/`token obtaining` flows
+
+
+#### Client credentials
+
+You need this flow when you make calls as `vendor`. For example, when working with [order].
+
+!!! Tip 
+    
+    If you want to make API calls as `end-user`, see [code] article.
+
+
+???+ example "Examples"
 
     === "Request"
         This example shows request to obtain **access token**
@@ -141,12 +165,114 @@ or somehow (we can send them to your email etc.).
         }
         ```
 
-## Refresh token
+#### Refresh token
 
-WIP
+Use this flow when your `access_token` has expired.
+
+???+ example "Examples"
+
+    === "Request"
+        This example shows request to refresh your access token
+        
+        !!! note
+            
+            This examples shows `refresh_token` **grant_type** flow. See [client credentials] or [code] for other flows.
+
+        ??? Tip
+            
+            If you are using `curl` for making requests, you can pass your client_id and client_secret by format
+            
+             `-u "<CLIENT_ID>:<CLIENT_SECRET>"`
+             
+             It is the same for passing `Authorization` header explicitly:
+             
+             `-H "Authorization: Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==`
+    
+        ```bash
+            curl -v -X POST "https://iumi.cash/api/v1/oauth/token" \
+            -u "<CLIENT_ID>:<CLIENT_SECRET>" \
+            -H "Content-Type: application/json" \
+            -d ' \
+            {
+              "grant_type": "refresh_token",
+              "refresh_token": "eRtAQTVyGJedojtUbkMoHWWOdMMl5ujCDk_94gAA21AAInqMcMvhHyuYQ0-5U9bFenYoVKzClY8kGl13WWOdMMl5ujCDk_94gA"
+            }
+            '
+        ```
+     
+    === "Response"
+    
+        A successful request returns the `HTTP 200 OK` status code and a JSON response body.
+
+        ```bash
+        {
+           "scope": "profile email https://iumi.cash/api/v1/recurrent",
+           "access_token": "A21AAInqMcMvhHyuYQ0xIMSNbl4BIEwkvJ93HukaWZ7o3akLHD-5U9bFC2enYoVKzClY8kGl13TCyKAO25DKYEB1bPR3bRrXg",
+           "token_type": "Bearer",
+           "expires_in": 28800,
+           "refresh_token": "eRtAQTVyGJedojtUbkMoHWWOdMMl5ujCDk_94gAA21AAInqMcMvhHyuYQ0-5U9bFenYoVKzClY8kGl13WWOdMMl5ujCDk_94gA",
+           "refresh_token_expires_in": 86400,
+           "nonce": "2022-04-06T20:10:53ZtyLRwCnLB3eGapVvhCVLScK8IUTqwqz2yUmMEOQbTEg"
+        }
+        ```
 
 
-## Authorization code
+#### Authorization code
+
+Use this flow when you need access API calls as `end user`. For example, [recurrent payments].
+
+!!! Tip
+    
+    To obtain `authorization_code`, see []
+
+???+ example "Examples"
+
+    === "Request"
+        This example shows request to refresh your access token
+        
+        !!! note
+            
+            This examples shows `refresh_token` **grant_type** flow. See [client credentials] or [refresh] for other flows.
+
+        ??? Tip
+            
+            If you are using `curl` for making requests, you can pass your client_id and client_secret by format
+            
+             `-u "<CLIENT_ID>:<CLIENT_SECRET>"`
+             
+             It is the same for passing `Authorization` header explicitly:
+             
+             `-H "Authorization: Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==`
+    
+        ```bash
+            curl -v -X POST "https://iumi.cash/api/v1/oauth/token" \
+            -u "<CLIENT_ID>:<CLIENT_SECRET>" \
+            -H "Content-Type: application/json" \
+            -d ' \
+            {
+              "grant_type": "authorization_code",
+              "code": "dsfhkj2389HJK93hjkf349hjsdf34rkjhd"
+            }
+            '
+        ```
+     
+    === "Response"
+    
+        A successful request returns the `HTTP 200 OK` status code and a JSON response body.
+
+        ```bash
+        {
+           "scope": "profile email https://iumi.cash/api/v1/recurrent",
+           "access_token": "A21AAInqMcMvhHyuYQ0xIMSNbl4BIEwkvJ93HukaWZ7o3akLHD-5U9bFC2enYoVKzClY8kGl13TCyKAO25DKYEB1bPR3bRrXg",
+           "token_type": "Bearer",
+           "expires_in": 28800,
+           "refresh_token": "eRtAQTVyGJedojtUbkMoHWWOdMMl5ujCDk_94gAA21AAInqMcMvhHyuYQ0-5U9bFenYoVKzClY8kGl13WWOdMMl5ujCDk_94gA",
+           "refresh_token_expires_in": 86400,
+           "nonce": "2022-04-06T20:10:53ZtyLRwCnLB3eGapVvhCVLScK8IUTqwqz2yUmMEOQbTEg"
+        }
+        ```
+
+## Authorization code API
 
 WIP
 
@@ -154,3 +280,6 @@ WIP
 [vendor registration]: /authentication/vendor_registration/
 [code]: #authorization-code
 [refresh]: #refresh-token
+[client credentials]: #client-credentials
+[order]: /orders/
+[recurrent payments]: /orders/recurrent_payments/

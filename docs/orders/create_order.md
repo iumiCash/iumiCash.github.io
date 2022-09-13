@@ -81,7 +81,7 @@ Creates an order
 
 ### Examples
 
-???+ Examples
+???+ example "Examples"
 
     === "Request"
 

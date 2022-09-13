@@ -60,4 +60,5 @@ nav:
   - Orders:
       - Orders: orders/index.md
       - Create order: orders/create_order.md
+      - Recurrent payments: orders/recurrent_payment.md
   - Idempotency: idempotency.md
