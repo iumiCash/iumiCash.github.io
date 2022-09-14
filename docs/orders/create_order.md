@@ -126,7 +126,6 @@ Creates an order
           "created_at": "2022-09-12T13:27:09.860466",
           "updated_at": "2022-09-12T13:27:09.860466",
           "status": "created",
-          "client_id": "example_client_id",
           "items": [
             {
               "name": "T-shirt",
@@ -168,6 +167,11 @@ Creates an order
         }
         ```
 
+## Callback data
+
+Order information that the iumiCash sends to the vendor's `callback_url`.
+
+
 ## Objects
 
 Request and response objects
@@ -197,7 +201,7 @@ Request and response objects
     `value` *Decimal*
     :   amount
     
-    `currency_code` *string*. See [available currencies](#currencies).
+    `currency_code` *enum*. See [available currencies](#currencies).
     :   Currency of item
 
 
@@ -208,7 +212,8 @@ Request and response objects
     `callback_url` *URL string*
     :   Later, the iumiCash will send [callback data](#callback-data) to this endpoint. Callback data will contain order object, so you can check order status in a iumiCash.
     
-        This endpoint should return `200 OK` with content `OK`. Otherwise, the iumiCash will make retry requests while the vendor returns successfull response. It required to make sure that the vendor processes order data.
+        This endpoint should return `200 OK` with content `OK`. Otherwise, the iumiCash will make retry
+        requests (once a hour etc.) while the vendor returns successfull response. It required to make sure that the vendor processes order data.
     
     `success_url` *URL string*
     :   When order succeeds the iumiCash will redirect user to this url.
@@ -222,7 +227,7 @@ Request and response objects
 ???+ info "Description"
 
     `link` *URL string*
-    :   Later, the iumiCash will send [callback data](#callback-data) to this endpoint. Callback data will contain order object, so you can check order status in a iumiCash.
+    :   The complete target URL. To make the related call, combine the method with this `link`.
     
     `rel` *enum*
     :   The link relation type.
@@ -239,8 +244,17 @@ Request and response objects
         
         Possible values:
         
-        * `get`
-        * `post`
+        * `GET`
+        * `POST`
 
+
+### Currencies
+
+???+ info "Description"
+
+    Possible values:
+
+    * `USD`
+    * `BSD`
 
 [idempotency]: /idempotency/
