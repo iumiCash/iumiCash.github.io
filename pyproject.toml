@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "vendor-api"
+version = "0.1.0"
+description = ""
+authors = ["tworedz"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+mkdocs-material = "^8.5.2"
+mkdocs-git-revision-date-localized-plugin = "^1.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
