@@ -254,7 +254,7 @@ Request and response objects
 
     Possible values:
 
-    * `USD`
-    * `BSD`
+    * `SBD`
+    * `NZD`
 
 [idempotency]: /idempotency/
