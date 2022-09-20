@@ -198,7 +198,7 @@ The iumiCash backend will send `POST` request to `callback_url` with `iumicash-s
         Example request with cURL that the iumiCash backend will send to your [`callback_url`](#callback-data).
 
         ```bash
-        curl -v -X POST https://iumi.cash/api/v1/orders/ \
+        curl -v -X POST https://starlink.com/api/v1/iumiCash/callback/ \
         -H "Content-Type: application/json" \
         -H "iumicash-signature: <some-calculated-order-specific-signature>" \
         -d ' \
