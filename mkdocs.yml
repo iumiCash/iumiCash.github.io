@@ -47,6 +47,12 @@ markdown_extensions:
   - pymdownx.tilde
   - toc:
       permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
 
 plugins:
   - search
@@ -64,4 +70,7 @@ nav:
       - Orders: orders/index.md
       - Create order: orders/create_order.md
       - Recurrent payments: orders/recurrent_payment.md
+  - Flow diagrams:
+      - One-Time payment: diagrams/onetime.md
+      - Recurrent payment: diagrams/recurrent.md
   - Idempotency: idempotency.md
