@@ -37,6 +37,12 @@ After activating virtual environment, run server:
 mkdocs serve
 ```
 
+To run on different port:
+```shell script
+mkdocs serve -a localhost:8001
+```
+
+
 **Documentation will automatically reload after saving sources.**
 
 ## Deploy
