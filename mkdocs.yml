@@ -25,6 +25,8 @@ theme:
     - content.code.annotate
     - content.tooltips
     - content.tabs.link
+    - search.suggest
+    - search.highlight
 
 markdown_extensions:
   - def_list
@@ -47,6 +49,7 @@ markdown_extensions:
       permalink: true
 
 plugins:
+  - search
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
