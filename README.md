@@ -2,6 +2,8 @@
 
 REST API for vendors.
 
+Documentation deployed [here](https://iumicash.github.io/vendor-api/).
+
 ## Info
 
 Documentation uses beautiful library [mkdocs](https://squidfunk.github.io/mkdocs-material/) under the hood.
