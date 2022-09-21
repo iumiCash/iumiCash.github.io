@@ -3,43 +3,117 @@
 
 This sequence diagram shows how One-Time payment works.
 
-```mermaid
-sequenceDiagram
-    autonumber
+???+ "Diagram"
 
-    actor Client
+    ```mermaid
+    sequenceDiagram
+        autonumber
 
-    participant Starlink
-    participant Auth
-    participant iumiCash
-    participant iumiFront
+        actor Client
 
-    Client->Starlink:Click **Pay via iumiCash**
+        participant Starlink
+        participant Auth
+        participant iumiCash
+        participant iumiFront
 
-    Starlink->Auth:Get access_token
-    Auth-->Starlink:Response
+        Client->Starlink: Click *Pay via iumiCash*
 
-    Starlink->iumiCash:Create **order** \nPOST **/api/v1/orders/**
-    iumiCash-->Starlink:Return created **order**
+        Starlink->Auth: Get access_token
+        Auth-->Starlink: Response
 
+        Starlink->iumiCash:Create *order*
+        iumiCash-->Starlink:Return created order
 
-    Starlink->iumiFront: Redirects to **capture url**
-    alt Client not authorized
-    iumiFront->iumiCash: Auth\n\nPOST **/v1/users/login/**\n\npayload
-    iumiCash-->iumiFront: Returns access_token
-    end
-    iumiFront-->Client:Client confirmation form\n\nShows **money amount**, **count**, description
-    Client->iumiFront:Approving\n\nClicks **Approve**
+        Starlink->iumiFront: Redirects to *capture_url*
+        alt Client not authorized
+        iumiFront->iumiCash: Redirects user to login
+        iumiCash-->iumiFront: Returns client_access_token
+        end
+        iumiFront-->Client: Client confirmation form
+        Client->iumiFront: Client approves
 
-    iumiFront->iumiCash:Send approve request
-    iumiCash-->iumiFront:Returning order status
-    alt success
-    iumiFront-->Starlink:If status **success**, redirects vendor to **success_url**\n
-    else fail
-    iumiFront-->Starlink:If another status: redirects to **error_url** 
-    end
+        iumiFront->iumiCash: Send approve request
+        iumiCash-->iumiFront: Returning order status
+        alt success
+        iumiFront-->Starlink: If status *success*, redirects the user to *success_url*
+        else fail
+        iumiFront-->Starlink: If another status: redirects to *error_url* 
+        end
 
-    iumiCash->Starlink:Callback to **callback_url**
-    Starlink-->iumiCash:The vendor should response with status 200
+        iumiCash->Starlink: Callback to *callback_url*
+        Starlink-->iumiCash: The vendor responses with 200
 
-```
+    ```
+
+??? info "Step descriptions"
+
+    1. Click **Pay via iumiCash**
+    :   The end user clicks button `Pay via iumiCash` on the vendor's site.
+    
+    1. Get access_token
+    :   On the same time, the vendor have to obtain `access_token` from `api/v1/oauth/token/` endpoint
+        with `grant_type=client_credentials`. See [access token] for more details.
+    
+    1. Response
+    :   The iumiCash returns `access_token` and other useful fields. See [access token]'s `Response` tab for details.
+    
+    1. Create *order*
+    :   The vendor constructs [order data] and makes [create order] request.
+    
+    1. Return created order
+    :   The iumiCash returns [order]. In `links` section returned `approve` [hateoas] link that the vendor
+        will use in the next step.
+    
+    1. Redirects to *capture_url*
+    :   The vendor redirects the user to `approve` [hateoas] `link` obtained in the previous step.
+    
+    1. Redirects user to login
+    :   If the user is not authorized the iumiCash redirects a user to default `login` form
+
+        !!! Note
+            This step only executed only if the user is not authorized
+
+        !!! Info
+            This step executed on the iumiCash side.
+    
+    1. Returns client_access_token
+    :   The iumiCash returns user's `client_access_token` and stores it in cookies.
+
+        !!! Note
+            This step only executed only if the user is not authorized
+        
+        !!! Info
+            This step executed on the iumiCash side.
+     
+    1. Client confirmation form
+    :   The iumiCash shows to the user confirmation form. It renders `money amount`, `description` etc.
+    
+    1. Client approves
+    :   The user approves [order] via clicking `Approve` button.
+    
+    1. Send approve request
+    :   The iumiCash front makes actual `approve` request to iumiCash.
+    
+    1. Returning order status
+    :   The iumiCash returns [order] object with changed status.
+    
+    1. If status *success*, redirects user to *success_url*
+    :   If status *success*, redirects user to *success_url*
+    
+    1. If another status: redirects to *error_url* 
+    :   If another status: redirects to *error_url* 
+    
+    1. Callback to *callback_url*
+    :   On the same time with `returning order status` on previous steps, the iumiCash will send
+        `POST` request to `callback_url` with [callback data].
+    
+    1. The vendor responses with 200
+    :   The vendor should response with `HTTP 200 OK` status and `OK` content as described in [callback data].
+    
+
+[access token]: /authentication/#client-credentials
+[order data]: /orders/create_order/#request
+[create order]: /orders/create_order/#create-order-api
+[order]: /orders/create_order/#response
+[hateoas]: /orders/create_order/#hateoas
+[callback data]: /orders/create_order/#callback-data
