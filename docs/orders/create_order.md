@@ -88,7 +88,7 @@ Creates an order
         Example request with cURL. You can make this request in any programming language.
 
         ```bash
-        curl -v -X POST https://iumi.cash/api/v1/orders/ \
+        curl -v -X POST https://api.iumi.cash/api/v1/orders/ \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer <Access-Token>" \
         -H "RequestId: 7b92603e-77ed-4896-8e78-5dea2050476a" \
@@ -144,22 +144,22 @@ Creates an order
           },
           "links": [
             {
-              "link": "https://iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
+              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
               "rel": "self",
               "method": "get"
             },
             {
-              "link": "https://iumi.cash/checkout/42481508-af81-43b9-82dd-d47d9e040ece/",
+              "link": "https://api.iumi.cash/checkout/42481508-af81-43b9-82dd-d47d9e040ece/",
               "rel": "approve",
               "method": "get"
             },
             {
-              "link": "https://iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/",
+              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/",
               "rel": "capture",
               "method": "post"
             },
             {
-              "link": "https://iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/cancel/",
+              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/cancel/",
               "rel": "cancel",
               "method": "post"
             }
@@ -226,22 +226,22 @@ The iumiCash backend will send `POST` request to `callback_url` with `iumicash-s
           },
           "links": [
             {
-              "link": "https://iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
+              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
               "rel": "self",
               "method": "get"
             },
             {
-              "link": "https://iumi.cash/checkout/42481508-af81-43b9-82dd-d47d9e040ece/",
+              "link": "https://api.iumi.cash/checkout/42481508-af81-43b9-82dd-d47d9e040ece/",
               "rel": "approve",
               "method": "get"
             },
             {
-              "link": "https://iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/",
+              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/",
               "rel": "capture",
               "method": "post"
             },
             {
-              "link": "https://iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/cancel/",
+              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/cancel/",
               "rel": "cancel",
               "method": "post"
             }

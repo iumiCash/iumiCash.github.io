@@ -9,8 +9,8 @@ and one or more HTTP request headers.
 !!! Tip
     The URL to the API service is either:
 
-    * Sandbox: `https://sandbox.iumi.cash`
-    * Production: `https://iumi.cash`
+    * Sandbox: `https://sandbox-api.iumi.cash`
+    * Production: `https://api.iumi.cash`
 
 Optionally, you can include `query parameters` on `GET` calls to filter,
 limit the size of, and sort the data in the responses.

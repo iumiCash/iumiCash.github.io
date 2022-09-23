@@ -139,7 +139,7 @@ You need this flow when you make calls as `vendor`. For example, when working wi
              `-H "Authorization: Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==`
     
         ```bash
-            curl -v -X POST "https://iumi.cash/api/v1/oauth/token" \
+            curl -v -X POST "https://api.iumi.cash/api/v1/oauth/token" \
             -u "<CLIENT_ID>:<CLIENT_SECRET>" \
             -H "Content-Type: application/json" \
             -d ' \
@@ -155,7 +155,7 @@ You need this flow when you make calls as `vendor`. For example, when working wi
 
         ```bash
         {
-           "scope": "profile email https://iumi.cash/api/v1/recurrent",
+           "scope": "profile email https://api.iumi.cash/api/v1/recurrent",
            "access_token": "A21AAInqMcMvhHyuYQ0xIMSNbl4BIEwkvJ93HukaWZ7o3akLHD-5U9bFC2enYoVKzClY8kGl13TCyKAO25DKYEB1bPR3bRrXg",
            "token_type": "Bearer",
            "expires_in": 28800,
@@ -189,7 +189,7 @@ Use this flow when your `access_token` has expired.
              `-H "Authorization: Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==`
     
         ```bash
-            curl -v -X POST "https://iumi.cash/api/v1/oauth/token" \
+            curl -v -X POST "https://api.iumi.cash/api/v1/oauth/token" \
             -u "<CLIENT_ID>:<CLIENT_SECRET>" \
             -H "Content-Type: application/json" \
             -d ' \
@@ -206,7 +206,7 @@ Use this flow when your `access_token` has expired.
 
         ```bash
         {
-           "scope": "profile email https://iumi.cash/api/v1/recurrent",
+           "scope": "profile email https://api.iumi.cash/api/v1/recurrent",
            "access_token": "A21AAInqMcMvhHyuYQ0xIMSNbl4BIEwkvJ93HukaWZ7o3akLHD-5U9bFC2enYoVKzClY8kGl13TCyKAO25DKYEB1bPR3bRrXg",
            "token_type": "Bearer",
            "expires_in": 28800,
@@ -245,7 +245,7 @@ Use this flow when you need access API calls as `end user`. For example, [recurr
              `-H "Authorization: Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==`
     
         ```bash
-            curl -v -X POST "https://iumi.cash/api/v1/oauth/token" \
+            curl -v -X POST "https://api.iumi.cash/api/v1/oauth/token" \
             -u "<CLIENT_ID>:<CLIENT_SECRET>" \
             -H "Content-Type: application/json" \
             -d ' \
@@ -262,7 +262,7 @@ Use this flow when you need access API calls as `end user`. For example, [recurr
 
         ```bash
         {
-           "scope": "profile email https://iumi.cash/api/v1/recurrent",
+           "scope": "profile email https://api.iumi.cash/api/v1/recurrent",
            "access_token": "A21AAInqMcMvhHyuYQ0xIMSNbl4BIEwkvJ93HukaWZ7o3akLHD-5U9bFC2enYoVKzClY8kGl13TCyKAO25DKYEB1bPR3bRrXg",
            "token_type": "Bearer",
            "expires_in": 28800,

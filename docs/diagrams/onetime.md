@@ -11,20 +11,20 @@ This sequence diagram shows how One-Time payment works.
 
         actor Client
 
-        participant Starlink
+        participant Vendor
         participant Auth
         participant iumiCash
         participant iumiFront
 
-        Client->Starlink: Click *Pay via iumiCash*
+        Client->Vendor: Click *Pay via iumiCash*
 
-        Starlink->Auth: Get access_token
-        Auth-->Starlink: Response
+        Vendor->Auth: Get access_token
+        Auth-->Vendor: Response
 
-        Starlink->iumiCash:Create *order*
-        iumiCash-->Starlink:Return created order
+        Vendor->iumiCash:Create *order*
+        iumiCash-->Vendor:Return created order
 
-        Starlink->iumiFront: Redirects to *capture_url*
+        Vendor->iumiFront: Redirects to *capture_url*
         alt Client not authorized
         iumiFront->iumiCash: Redirects user to login
         iumiCash-->iumiFront: Returns client_access_token
@@ -35,13 +35,13 @@ This sequence diagram shows how One-Time payment works.
         iumiFront->iumiCash: Send approve request
         iumiCash-->iumiFront: Returning order status
         alt success
-        iumiFront-->Starlink: If status *success*, redirects the user to *success_url*
+        iumiFront-->Vendor: If status *success*, redirects the user to *success_url*
         else fail
-        iumiFront-->Starlink: If another status: redirects to *error_url* 
+        iumiFront-->Vendor: If another status: redirects to *error_url* 
         end
 
-        iumiCash->Starlink: Callback to *callback_url*
-        Starlink-->iumiCash: The vendor responses with 200
+        iumiCash->Vendor: Callback to *callback_url*
+        Vendor-->iumiCash: The vendor responses with 200
 
     ```
 
