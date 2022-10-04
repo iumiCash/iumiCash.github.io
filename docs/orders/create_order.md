@@ -350,5 +350,5 @@ Request and response objects
     * `SBD`
     * `NZD`
 
-[idempotency]: /idempotency/
-[client secret]: /authentication/vendor_registration/
+[idempotency]: ../idempotency.md
+[client secret]: ../authentication/vendor_registration.md

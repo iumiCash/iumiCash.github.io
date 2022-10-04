@@ -33,5 +33,5 @@ limit the size of, and sort the data in the responses.
 :    Idempotency key for request. See [idempotency] for more information.
 
 
-[idempotency]: /idempotency/
-[access token]: /authentication/#generate-access-token-api
+[idempotency]: idempotency.md
+[access token]: authentication/index.md#generate-access-token-api

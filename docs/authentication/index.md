@@ -144,7 +144,7 @@ You need this flow when you make calls as `vendor`. For example, when working wi
             -H "Content-Type: application/json" \
             -d ' \
             {
-              "grant_type": "client_credentials",
+              "grant_type": "client_credentials"
             }
             '
         ```
@@ -277,9 +277,9 @@ Use this flow when you need access API calls as `end user`. For example, [recurr
 WIP
 
 
-[vendor registration]: /authentication/vendor_registration/
+[vendor registration]: ../authentication/vendor_registration.md
 [code]: #authorization-code
 [refresh]: #refresh-token
 [client credentials]: #client-credentials
-[order]: /orders/
-[recurrent payments]: /orders/recurrent_payments/
+[order]: ../orders/index.md
+[recurrent payments]: ../orders/recurrent_payment.md

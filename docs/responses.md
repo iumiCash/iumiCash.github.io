@@ -133,6 +133,6 @@ For validation errors, iumiCash returns the `HTTP 400 Bad Request` status code.
     :    Validation message for this message.
 
     
-[HATEOAS]: /orders/create_order/#hateoas
+[HATEOAS]: orders/create_order.md#hateoas
 [Authorization errors]: #authorization-errors
 [Validation errors]: #validation-errors
