@@ -5,7 +5,8 @@
 iumiCash REST APIs use [OAuth 2.0](https://oauth.net/2/) access tokens to authenticate requests. 
 Your access token authorizes you to use the iumiCash REST API servers.
 
-To call a REST API in your integration, you must exchange your **client ID** and **client secret** for an access token.  
+To call a REST API in your integration, you must exchange 
+your **client ID** and **client secret** for an access token.  
 
 You can find your **client ID** and **client secret** by logging in to iumiCash Developer Dashboard 
 or somehow (we can send them to your email etc.).
@@ -277,7 +278,7 @@ Use this flow when you need access API calls as `end user`. For example, [recurr
 WIP
 
 
-[vendor registration]: ../authentication/vendor_registration.md
+[vendor registration]: ../vendors/vendor_registration.md
 [code]: #authorization-code
 [refresh]: #refresh-token
 [client credentials]: #client-credentials

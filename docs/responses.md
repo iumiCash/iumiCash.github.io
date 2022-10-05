@@ -103,7 +103,10 @@ For validation errors, iumiCash returns the `HTTP 400 Bad Request` status code.
 
     !!! danger
         
-        Be carefull! For `HTTP 5xx` status codes, iumiCash can send **NOT** `application/json` response type. It may happen when iumiCash servers somehow is down. `HTTP 5xx` status codes in most cases sent by `reverse proxies` e.g. [nginx](https://nginx.org/), [traefik](https://traefik.io/) in `text/plain` response type.
+        Be carefull! For `HTTP 5xx` status codes, iumiCash can send **NOT** `application/json` response type. 
+        It may happen when iumiCash servers somehow is down. 
+        `HTTP 5xx` status codes in most cases sent by `reverse proxies` e.g. 
+        [nginx](https://nginx.org/), [traefik](https://traefik.io/) in `text/plain` response type.
 
     ```
     {
@@ -126,11 +129,11 @@ For validation errors, iumiCash returns the `HTTP 400 Bad Request` status code.
 
     `field` *string*
     
-    :    Field where error happens.
+    :    Field where error was happen.
 
     `message` *string*
     
-    :    Validation message for this message.
+    :    Validation message for this field.
 
     
 [HATEOAS]: orders/create_order.md#hateoas

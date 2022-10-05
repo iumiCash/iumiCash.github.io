@@ -1,6 +1,7 @@
 site_name: iumiCash REST API
 
 theme:
+  logo: assets/logo.svg
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -59,16 +60,28 @@ plugins:
       enable_creation_date: true
       type: timeago
 
+
+extra_css:
+  - assets/css/style.css
+
+
 nav:
   - Getting started: index.md
   - Vendor registration: authentication/vendor_registration.md
   - Authentication: authentication/index.md
   - Requests: requests.md
   - Responses: responses.md
+  - Vendors:
+      - Vendors - Introduction: vendors/index.md
+      - Registration: vendors/vendor_registration.md
+      - Verification: vendors/verification.md
+      - User settings : vendors/settings.md
+      - Development page: vendors/development_page.md
   - Orders:
       - Orders: orders/index.md
       - Create order: orders/create_order.md
       - Recurrent payments: orders/recurrent_payment.md
+      - Callback: orders/callback.md
   - Flow diagrams:
       - One-Time payment: diagrams/onetime.md
       - Recurrent payment: diagrams/recurrent.md

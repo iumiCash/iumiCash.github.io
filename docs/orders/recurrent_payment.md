@@ -1,3 +1,3 @@
 # Recurrent payments
 
-WIP
+!!! danger "WIP"

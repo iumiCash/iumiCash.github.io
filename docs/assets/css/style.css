@@ -1,0 +1,12 @@
+.md-header {
+    background:        linear-gradient(90deg, rgb(50, 42, 126) 50%, rgb(224, 167, 69) 100%);
+}
+
+.md-logo {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.md-logo img {
+    height: 2rem !important;
+}
