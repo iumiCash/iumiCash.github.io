@@ -1,31 +1,56 @@
 # Order callback mechanism
 
-!!! danger "WIP"
-
 ## Why you need to configure callback?
 
-When user redirected to iumiCash.
+When user completed/cancelled order flow, your backend needs to be notified about flow result.
+So the iumiCash will send `POST` request to your [`callback_url`][callback url] with details.
+
 
 ## Callback data
 
-Order information that the iumiCash sends to the vendor's `callback_url`.
+Order information that the iumiCash will send to the vendor's [`callback_url`][callback url].
 
-Callback data will contain order object, so you can check order status in a iumiCash.
+Callback data will contain [order object][order], so you can check order status in a iumiCash.
+
+This endpoint should return `200 OK` with content `OK`. Otherwise, the iumiCash will make retry
+requests (see [retry policy]) until the vendor returns successful response, 
+or the vendor consumed order data by yourself.
+
+!!! note
+    It required to make sure that the vendor processed order data.
+
+
+## Callback request
 
 The iumiCash backend will send `POST` request to `callback_url` with `iumicash-signature` header.
+
+`POST` [`callback_url`][callback url]
+
+### Request headers
+
+???+ info "Header parameters"
+
+    `iumicash-signature` *string*
+    :   iumiCash will sign [order data][order] with [client_secret][client secret],
+        so your backend can verify, that request was made by us. 
+    :   !!! tip
+            See [iumicash-signature][iumicash signature] for more information about signing.
+
+    `Content-Type` *string*
+    :   The media type. Required for operations with a request body. The value is `application/<format>`, where format is `json`.
+
+### Request
+
+In request the iumiCash send [Order data][order]. See more information in [example](#example) below.
+
+### Response
 
 !!! Info
 
     This endpoint should return `200 OK` with content `OK`. Otherwise, the iumiCash will make retry
-    requests (once a hour etc.) while the vendor returns successfull response. 
-    It required to make sure that the vendor processes order data.
+    requests (see [retry policy]) while the vendor returns successfull response. 
 
-!!! danger "Security tip"
-
-    The iumiCash will send additional `iumicash-signature` header parameter that contains data signature
-    signed with `client_secret` (see [client secret] for more information).
-    
-    So your backend can verify that request was made by the iumiCash.
+    It is required to make sure that the vendor processes order data.
 
 
 ### Example
@@ -103,6 +128,31 @@ The iumiCash backend will send `POST` request to `callback_url` with `iumicash-s
             return Response(data="OK", status_code=status.HTTP_200_OK)
         ```
 
+### iumiCash Signature
+
+iumiCash will sign [order data][order] with [client_secret][client secret].
+In callback endpoint you can sign received order data with your `client_secret` and verify
+that this request was made by original iumiCash.
+
+To verify request, simply compare the next values: 
+
+* `iumicash-signature` from request headers.
+* your result after signing [order data][order] with [client_secret][client secret]
+
+!!! warning "Security note"
+    If they equals, then request was made by original iumiCash.
+
+    If not, request was compromised by others, and you should reject this request.
+
+### Retry policy
+
+Retry requests will send by exponential way or somehow else and maybe changed in the future. 
+For example, after 1 minute, 2 min, 4 min etc.
+
 
 [idempotency]: ../idempotency.md
-[client secret]: ../authentication/vendor_registration.md
+[client secret]: ../vendors/vendor_registration.md
+[callback url]: ../orders/create_order.md#application_context
+[order]: ../orders/create_order.md#response
+[iumicash signature]: #iumicash-signature
+[retry policy]: #retry-policy

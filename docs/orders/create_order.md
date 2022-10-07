@@ -26,7 +26,8 @@ Creates an order
 ???+ info "Request body"
 
     `external_id` *string* **required**
-    :    Unique identifier of your system. iumiCash will save this to this order, so you can further identify iumiCash order with your order instance.
+    :    Unique identifier of your system. iumiCash will save this to this order, 
+         so you can further identify iumiCash order with your order instance.
 
     `items` *list of [*item object*](#item)* **required**
     :    Order items in the order.
@@ -34,7 +35,7 @@ Creates an order
     `application_context` [*object*](#application_context) **required**
     :    Callback/redirect URIs that used during payment process.
 
-    
+
 ### Response
 
 ???+ success "Response"
@@ -44,7 +45,7 @@ Creates an order
     :    iumiCash identifier. Using to unique identify resourses (in this example, order etc.)
 
     `external_id` *string* **unique**
-    
+
     :    Unique identifier of your system. 
 
     `created_at` *datetime*
@@ -65,7 +66,6 @@ Creates an order
          * `cancelled`
          * `completed`
 
-
     `items` *list of [*item object*](#item)*
 
     :    Order items in the order.
@@ -76,7 +76,8 @@ Creates an order
 
     `links` *list of [*HATEOAS links*](#hateoas)*
     
-    :    An array of request-related HATEOAS links. For example, to complete payer approval, use `approve` link to redirect the payer.
+    :    An array of request-related HATEOAS links. For example, 
+         to complete payer approval, use `approve` link to redirect the payer.
 
 
 ### Examples
@@ -177,16 +178,16 @@ Request and response objects
 ???+ info "Description"
 
     `name` *string*
-    :   Name of the order
+    :   Name of the order.
     
     `description` *string*
-    :   Description of the order
+    :   Description of the order.
     
     `amount` [*object*](#amount)
-    :   Amount object
+    :   Amount object.
     
     `count` *integer*
-    :   Count of this item
+    :   Count of this item.
 
 
 ### amount
@@ -211,6 +212,8 @@ Request and response objects
         This endpoint should return `200 OK` with content `OK`. Otherwise, the iumiCash will make retry
         requests (once a hour etc.) until the vendor returns successfull response. 
         It required to make sure that the vendor processed order data.
+    :   !!! tip
+            For more information, see [callback data].
     
     `success_url` *URL string*
     :   When order succeeds the iumiCash will redirect user to this url.

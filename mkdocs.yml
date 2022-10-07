@@ -45,6 +45,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
+  - pymdownx.magiclink
   - toc:
       permalink: true
   - pymdownx.superfences:
@@ -67,7 +68,6 @@ extra_css:
 
 nav:
   - Getting started: index.md
-  - Vendor registration: authentication/vendor_registration.md
   - Authentication: authentication/index.md
   - Requests: requests.md
   - Responses: responses.md

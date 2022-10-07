@@ -170,6 +170,9 @@ You need this flow when you make calls as `vendor`. For example, when working wi
 
 Use this flow when your `access_token` has expired.
 
+!!! note "Refresh token"
+    Refresh tokens has infinite lifetime duration.
+
 ???+ example "Examples"
 
     === "Request"

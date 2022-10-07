@@ -51,6 +51,10 @@ For authentication specific `HTTP 4xx` status codes, see [Authorization errors].
     
     | Status code | Description | Possible causes and solutions | 
     | ----------- | ----------- | ----------------------------- |
+    | `HTTP 400 Bad Request` | `USER_PAYMENT_LIMIT` | Notify user about iumiCash settings error. |
+    | `HTTP 400 Bad Request` | `USER_NOT_ACTIVE` | Test |
+    | `HTTP 400 Bad Request` | `ACCOUNT_BALANCE_IS_LOW` | Test |
+    | `HTTP 400 Bad Request` | `DISABLED_BY_USER` | Test |
     | `HTTP 400 Bad Request`  | The request is not well-formed, syntactically incorrect, or violates schema. | See [Validation errors]. The server could not understand the request. Can be one of this: <ul><li>The API cannot convert the payload data</li><li>The data is not in the expected data format</li><li>A required field is not available</li><ul> | 
     | `HTTP 404 Not Found` | A specified resource does not exist | The server did not find anything that matches the requested URI. Either the URI is incorrect or the resource is not available. For example, no data exists in the database at that key. |
     | `HTTP 405 Method Not Allowed` | The server does not implement the requested HTTP method. | The service or resource does not support the requested HTTP method. |
