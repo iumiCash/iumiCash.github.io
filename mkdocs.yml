@@ -40,6 +40,8 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.critic
   - pymdownx.caret
   - pymdownx.keys
@@ -65,6 +67,10 @@ plugins:
 extra_css:
   - assets/css/style.css
 
+extra_javascript:
+  - assets/js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
   - Getting started: index.md
@@ -75,7 +81,6 @@ nav:
       - Vendors - Introduction: vendors/index.md
       - Registration: vendors/vendor_registration.md
       - Verification: vendors/verification.md
-      - User settings : vendors/settings.md
       - Development page: vendors/development_page.md
   - Orders:
       - Orders: orders/index.md

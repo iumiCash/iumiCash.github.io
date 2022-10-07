@@ -21,13 +21,7 @@ Cache-Control: no-store
 5.
 
 Vendor API:
-1) Infinite lifetime of recurrent tokens. PayPal TaC (on clients behalf)
-2) Verified vendors (Displays in iumiCash login (confirmation) screen).
-3) Limits of each vendor for client.
-4) Add into errors list (USER_PAYMENT_LIMIT, USER_NOT_ACTIVE, ACCOUNT_BALANCE_IS_LOW, DISABLED_BY_USER). User restricts payment value for the vendor.
 5) One-Time = Recurrent
-6) Infinite token lifetime
-7) Notify by exponential way. If vendor asked iumiCash about status of order, then iumiCash disables exponential notifying
-8) Fee policy
 9) authorize url
-10)
+10) vendor introduction
+11) callback signature

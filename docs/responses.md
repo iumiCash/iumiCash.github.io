@@ -51,10 +51,10 @@ For authentication specific `HTTP 4xx` status codes, see [Authorization errors].
     
     | Status code | Description | Possible causes and solutions | 
     | ----------- | ----------- | ----------------------------- |
-    | `HTTP 400 Bad Request` | `USER_PAYMENT_LIMIT` | Notify user about iumiCash settings error. |
-    | `HTTP 400 Bad Request` | `USER_NOT_ACTIVE` | Test |
-    | `HTTP 400 Bad Request` | `ACCOUNT_BALANCE_IS_LOW` | Test |
-    | `HTTP 400 Bad Request` | `DISABLED_BY_USER` | Test |
+    | `HTTP 400 Bad Request` | `USER_PAYMENT_LIMIT` | The user has set settings on the iumiCash side that do not allow this vendor to process this request on behalf of this user  |
+    | `HTTP 400 Bad Request` | `USER_NOT_ACTIVE` | It is not possible to make a request on behalf of this user, since this user is no longer active in iumiCash |
+    | `HTTP 400 Bad Request` | `ACCOUNT_BALANCE_IS_LOW` | It is impossible to make a request due to the fact that the user does not have enough money on the iumiCash balance |
+    | `HTTP 400 Bad Request` | `DISABLED_BY_USER` | The user has disabled the ability to perform this action for the current vendor |
     | `HTTP 400 Bad Request`  | The request is not well-formed, syntactically incorrect, or violates schema. | See [Validation errors]. The server could not understand the request. Can be one of this: <ul><li>The API cannot convert the payload data</li><li>The data is not in the expected data format</li><li>A required field is not available</li><ul> | 
     | `HTTP 404 Not Found` | A specified resource does not exist | The server did not find anything that matches the requested URI. Either the URI is incorrect or the resource is not available. For example, no data exists in the database at that key. |
     | `HTTP 405 Method Not Allowed` | The server does not implement the requested HTTP method. | The service or resource does not support the requested HTTP method. |

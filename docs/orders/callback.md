@@ -10,7 +10,7 @@ So the iumiCash will send `POST` request to your [`callback_url`][callback url] 
 
 Order information that the iumiCash will send to the vendor's [`callback_url`][callback url].
 
-Callback data will contain [order object][order], so you can check order status in a iumiCash.
+Callback data will contain [order object][order], so you can check order status in iumiCash.
 
 This endpoint should return `200 OK` with content `OK`. Otherwise, the iumiCash will make retry
 requests (see [retry policy]) until the vendor returns successful response, 
@@ -146,8 +146,40 @@ To verify request, simply compare the next values:
 
 ### Retry policy
 
-Retry requests will send by exponential way or somehow else and maybe changed in the future. 
-For example, after 1 minute, 2 min, 4 min etc.
+The iumiCash uses [Exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff) algorithm 
+to notify your [callback url].
+
+An exponential backoff algorithm retries requests exponentially, 
+increasing the waiting time between retries up to a maximum backoff time. 
+For example:
+
+1. Make a callback request.
+2. If the request fails, wait 1 + `random_number_milliseconds` seconds and retry the request.
+3. If the request fails, wait 2 + `random_number_milliseconds` seconds and retry the request.
+4. If the request fails, wait 4 + `random_number_milliseconds` seconds and retry the request.
+5. And so on, up to a `maximum_backoff` time.
+6. Continue waiting and retrying up to some maximum number of retries, 
+but do not increase the wait period between retries.
+
+where:
+
+`wait time`
+:   $$
+    min(((2^n)+random\_number\_milliseconds), maximum\_backoff)
+    $$
+
+    with n incremented by 1 for each iteration (request).
+
+`random_number_milliseconds`
+:   is a random number of milliseconds less than or equal to 1000. 
+    This helps to avoid cases in which many clients are synchronized by some situation
+    and all retry at once, sending requests in synchronized waves. 
+    The value of `random_number_milliseconds` is recalculated after each retry request.
+
+`maximum_backoff` 
+:   is typically $2^{22}$ seconds (~1.6 months). The appropriate value depends on the use case.
+
+
 
 
 [idempotency]: ../idempotency.md
