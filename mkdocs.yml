@@ -81,7 +81,7 @@ nav:
       - Generate access token: authentication/token.md
       - Authorization code request: authentication/authorize.md
   - Vendors:
-      - Vendors - Introduction: vendors/token.md
+      - Vendors - Introduction: vendors/index.md
       - Registration: vendors/vendor_registration.md
       - Verification: vendors/verification.md
       - Development page: vendors/development_page.md
