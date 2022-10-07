@@ -73,21 +73,25 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - Getting started: index.md
-  - Authentication: authentication/index.md
+  - Getting started: token.md
   - Requests: requests.md
   - Responses: responses.md
+  - Authentication:
+      - Authentication - Introduction: authentication/index.md
+      - Generate access token: authentication/token.md
+      - Authorization code request: authentication/authorize.md
   - Vendors:
-      - Vendors - Introduction: vendors/index.md
+      - Vendors - Introduction: vendors/token.md
       - Registration: vendors/vendor_registration.md
       - Verification: vendors/verification.md
       - Development page: vendors/development_page.md
   - Orders:
-      - Orders: orders/index.md
+      - Orders: orders/token.md
       - Create order: orders/create_order.md
+      - Capture order: orders/capture.md
       - Recurrent payments: orders/recurrent_payment.md
       - Callback: orders/callback.md
   - Flow diagrams:
-      - One-Time payment: diagrams/onetime.md
+      - Payment: diagrams/onetime.md
       - Recurrent payment: diagrams/recurrent.md
   - Idempotency: idempotency.md

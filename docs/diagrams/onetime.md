@@ -111,7 +111,7 @@ This sequence diagram shows how One-Time payment works.
     :   The vendor should response with `HTTP 200 OK` status and `OK` content as described in [callback data].
     
 
-[access token]: ../authentication/index.md#client-credentials
+[access token]: ../authentication/token.md#client-credentials
 [order data]: ../orders/create_order.md#request
 [create order]: ../orders/create_order.md#create-order-api
 [order]: ../orders/create_order.md#response

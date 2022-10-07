@@ -34,4 +34,4 @@ limit the size of, and sort the data in the responses.
 
 
 [idempotency]: idempotency.md
-[access token]: authentication/index.md#generate-access-token-api
+[access token]: authentication/token.md#generate-access-token-api
