@@ -93,21 +93,6 @@ In request the iumiCash send [Order data][order]. See more information in [examp
               "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
               "rel": "self",
               "method": "get"
-            },
-            {
-              "link": "https://api.iumi.cash/checkout/42481508-af81-43b9-82dd-d47d9e040ece/",
-              "rel": "approve",
-              "method": "get"
-            },
-            {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/",
-              "rel": "capture",
-              "method": "post"
-            },
-            {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/cancel/",
-              "rel": "cancel",
-              "method": "post"
             }
           ]
         }

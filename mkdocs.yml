@@ -89,9 +89,8 @@ nav:
   - Orders:
       - Orders: orders/index.md
       - Create order: orders/create_order.md
-      - Capture order: orders/capture.md
+      - Get order: orders/get.md
       - Recurrent payments: orders/recurrent_payment.md
-      - Callback: orders/callback.md
   - Flow diagrams:
       - Payment: diagrams/onetime.md
       - Recurrent payment: diagrams/recurrent.md

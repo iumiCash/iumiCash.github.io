@@ -1,15 +1,13 @@
-# Capture order
+# Get order
 
-If the vendor missed capture from iumiCash for some reason, 
+If the vendor missed response from iumiCash for some reason, 
 then he can independently ask iumiCash about the status of the order.
 
-iumiCash understands that it was a certain vendor who asked and marks this order as `notified` and stops trying to reach [`callback_url`](callback.md).
+## Get order API
 
-## Capture order API
+Get an order
 
-Capture an order
-
-`POST /api/v1/orders/<order_id>/capture/`
+`POST /api/v1/orders/<order_id>/`
 
 
 ### Path parameters
@@ -57,17 +55,12 @@ Capture an order
     
          * `created`
          * `approved`
-         * `captured`
          * `cancelled`
          * `completed`
 
     `items` *list of [*item object*](#item)*
 
     :    Order items in the order.
-
-    `application_context` [*object*](#application_context)
-
-    :    Callback/redirect URIs that used during payment process.
 
     `links` *list of [*HATEOAS links*](#hateoas)*
     
@@ -84,7 +77,7 @@ Capture an order
         Example request with cURL. You can make this request in any programming language.
 
         ```bash
-        curl -v -X POST https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/ \
+        curl -v -X POST https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/ \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer <Access-Token>"'
         ```
@@ -111,31 +104,11 @@ Capture an order
               "count": 1
             }
           ],
-          "application_context": {
-            "callback_url": "https://starlink.com/api/v1/iumiCash/callback/"
-            "success_url": "https://starlink.com/success.html",
-            "error_url": "https://starlink.com/error.html"
-          },
           "links": [
             {
               "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
               "rel": "self",
               "method": "get"
-            },
-            {
-              "link": "https://api.iumi.cash/checkout/42481508-af81-43b9-82dd-d47d9e040ece/",
-              "rel": "approve",
-              "method": "get"
-            },
-            {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/",
-              "rel": "capture",
-              "method": "post"
-            },
-            {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/cancel/",
-              "rel": "cancel",
-              "method": "post"
             }
           ]
         }
@@ -143,6 +116,5 @@ Capture an order
 
 
 [idempotency]: ../idempotency.md
-[client secret]: ../authentication/vendor_registration.md
-[callback data]: ../orders/callback.md
+[client secret]: ../vendors/vendor_registration.md
 [identifier]: ../types.md#iumicash-identifier

@@ -32,9 +32,6 @@ Creates an order
     `items` *list of [*item object*](#item)* **required**
     :    Order items in the order.
 
-    `application_context` [*object*](#application_context) **required**
-    :    Callback/redirect URIs that used during payment process.
-
 
 ### Response
 
@@ -70,10 +67,6 @@ Creates an order
 
     :    Order items in the order.
 
-    `application_context` [*object*](#application_context)
-
-    :    Callback/redirect URIs that used during payment process.
-
     `links` *list of [*HATEOAS links*](#hateoas)*
     
     :    An array of request-related HATEOAS links. For example, 
@@ -106,12 +99,7 @@ Creates an order
               },
               "count": 1
             }
-          ],
-          "application_context": {
-            "callback_url": "https://starlink.com/api/v1/iumiCash/callback/",
-            "success_url": "https://starlink.com/success.html",
-            "error_url": "https://starlink.com/error.html"
-          }
+          ]
         }
         '
         ```
@@ -138,31 +126,11 @@ Creates an order
               "count": 1
             }
           ],
-          "application_context": {
-            "callback_url": "https://starlink.com/api/v1/iumiCash/callback/"
-            "success_url": "https://starlink.com/success.html",
-            "error_url": "https://starlink.com/error.html"
-          },
           "links": [
             {
               "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
               "rel": "self",
               "method": "get"
-            },
-            {
-              "link": "https://api.iumi.cash/checkout/42481508-af81-43b9-82dd-d47d9e040ece/",
-              "rel": "approve",
-              "method": "get"
-            },
-            {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/",
-              "rel": "capture",
-              "method": "post"
-            },
-            {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/cancel/",
-              "rel": "cancel",
-              "method": "post"
             }
           ]
         }
@@ -199,27 +167,6 @@ Request and response objects
     
     `currency_code` *enum*. See [available currencies](#currencies).
     :   Currency of item
-
-
-### application_context
-
-???+ info "Description"
-
-    `callback_url` *URL string*
-    :   Later, the iumiCash will send [callback data] to this endpoint. 
-        Callback data will contain order object, so you can check order status in a iumiCash.
-    
-        This endpoint should return `200 OK` with content `OK`. Otherwise, the iumiCash will make retry
-        requests (once a hour etc.) until the vendor returns successfull response. 
-        It required to make sure that the vendor processed order data.
-    :   !!! tip
-            For more information, see [callback data].
-    
-    `success_url` *URL string*
-    :   When order succeeds the iumiCash will redirect user to this url.
-    
-    `error_url` *URL string*
-    :   When order failed somehow (user cancels order etc.) the iumiCash will redirect user to this url.
 
 
 ### HATEOAS
@@ -259,5 +206,4 @@ Request and response objects
 
 
 [idempotency]: ../idempotency.md
-[client secret]: ../authentication/vendor_registration.md
-[callback data]: ../orders/callback.md
+[client secret]: ../vendors/vendor_registration.md

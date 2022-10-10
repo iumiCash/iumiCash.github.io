@@ -44,12 +44,7 @@ You can make idempotent calls any number of times without concern that the serve
               },
               "count": 1
             }
-          ],
-          "application_context": {
-            "callback_url": "https://starlink.com/api/v1/iumiCash/callback/",
-            "success_url": "https://starlink.com/success.html",
-            "error_url": "https://starlink.com/error.html"
-          }
+          ]
         }
         '
         ```
@@ -77,31 +72,11 @@ You can make idempotent calls any number of times without concern that the serve
               "count": 1
             }
           ],
-          "application_context": {
-            "callback_url": "https://starlink.com/api/v1/iumiCash/callback/"
-            "success_url": "https://starlink.com/success.html",
-            "error_url": "https://starlink.com/error.html"
-          },
           "links": [
             {
               "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
               "rel": "self",
               "method": "get"
-            },
-            {
-              "link": "https://api.iumi.cash/checkout/42481508-af81-43b9-82dd-d47d9e040ece/",
-              "rel": "approve",
-              "method": "get"
-            },
-            {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/capture/",
-              "rel": "capture",
-              "method": "post"
-            },
-            {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/cancel/",
-              "rel": "cancel",
-              "method": "post"
             }
           ]
         }
