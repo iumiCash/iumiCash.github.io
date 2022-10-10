@@ -116,4 +116,4 @@ This sequence diagram shows how One-Time payment works.
 [create order]: ../orders/create_order.md#create-order-api
 [order]: ../orders/create_order.md#response
 [hateoas]: ../orders/create_order.md#hateoas
-[callback data]: ../orders/create_order.md#callback-data
+[callback data]: ../orders/callback.md

@@ -65,7 +65,7 @@ The iumiCash accomplished this by displaying an authorization page to the user.
     `state` *string*
     
     :    The application generates a random string and includes it in the request. 
-         It should then check that the same value is returned after the user authorizes the app. 
+         **It should then check that the same value is returned after the user authorizes the app.**
          This is used to prevent CSRF attacks.
 
 

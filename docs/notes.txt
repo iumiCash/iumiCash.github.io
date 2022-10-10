@@ -21,7 +21,5 @@ Cache-Control: no-store
 5.
 
 Vendor API:
-9) authorize url
-10) vendor introduction
-11) callback signature
+
 13) redraw recurrent diagram without `user` as actor

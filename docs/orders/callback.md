@@ -139,10 +139,37 @@ To verify request, simply compare the next values:
 * `iumicash-signature` from request headers.
 * your result after signing [order data][order] with [client_secret][client secret]
 
+!!! note "Algorithm"
+    The sign algorithm is [`HMAC-SHA256`](https://en.wikipedia.org/wiki/HMAC), where data is request's body,
+    secret cryptographic key is vendor's [`client_secret`][client secret]
+
+!!! example "Signature comparing"
+
+    ```python
+    import os
+    import hashlib
+    import hmac
+
+    client_secret = os.environ.get("CLIENT_SECRET")
+
+    data = response.content
+    signature = response.headers['iumicash-signature']
+    signature_computed = hmac.new(
+        key=client_secret.encode('utf-8'),
+        msg=data.encode('utf-8'),
+        digestmod=hashlib.sha256
+    ).hexdigest()
+
+    if not hmac.compare_digest(signature, signature_computed):
+        print("Signature not valid! Request was malicious!")
+
+    ```
+
 !!! warning "Security note"
+
     If they equals, then request was made by original iumiCash.
 
-    If not, request was compromised by others, and you should reject this request.
+    If not, request was compromised by others, and you should **reject** this request.
 
 ### Retry policy
 

@@ -33,28 +33,36 @@
         * `client_credentials`
         * `authorization_code`
         * `refresh_token`
-        
+
+    `redirect_uri` *URL string*
+    :   If the redirect URI was included in the initial authorization request, 
+        the service must require it in the token request as well. 
+        The redirect URI in the token request must be an exact match of the redirect URI 
+        that was used when generating the authorization code. 
+
+        The service must reject the request otherwise.
+
     `code` *string*
     :    Specification by OAuth 2.0 protocol. 
-    
+
     :   !!! info
              Required when `grant_type` is `authorization_code`. See [code] flow for details.
-        
+
     `refresh_token` *string*
     :    Specification by OAuth 2.0 protocol. 
-    
+
     :   !!! info
             Required when `grant_type` is `refresh_token`. See [refresh] flow for details.
-        
+
     `state` *string*
     :    Specification by OAuth 2.0 protocol. 
-    
+
     :   ??? info
             An opaque value used by the client to maintain state between the request and callback. 
             The authorization server includes this value when redirecting the user-agent back to the client. 
             The parameter SHOULD be used for preventing cross-site request forgery
     
-         
+
 
     
 ### Response
@@ -206,10 +214,10 @@ Use this flow when your `access_token` has expired.
 
 #### Authorization code
 
-Use this flow when you need access API calls as `end-user`. For example, [recurrent payments].
+Use this flow when you need access API calls as `end-user`.
 
 !!! Tip
-    
+
     To obtain `authorization_code`, see [authorization code].
 
 ???+ example "Examples"
@@ -237,13 +245,14 @@ Use this flow when you need access API calls as `end-user`. For example, [recurr
             -d ' \
             {
               "grant_type": "authorization_code",
+              "redirect_uri": "https://starlink.com/callback",
               "code": "dsfhkj2389HJK93hjkf349hjsdf34rkjhd"
             }
             '
         ```
-     
+
     === "Response"
-    
+
         A successful request returns the `HTTP 200 OK` status code and a JSON response body.
 
         ```bash
@@ -264,5 +273,4 @@ Use this flow when you need access API calls as `end-user`. For example, [recurr
 [refresh]: #refresh-token
 [client credentials]: #client-credentials
 [order]: ../orders/index.md
-[recurrent payments]: ../orders/recurrent_payment.md
 [authorization code]: ../authentication/authorize.md
