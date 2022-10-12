@@ -1,4 +1,4 @@
-# Types
+# Custom types
 
 ### iumiCash identifier
 

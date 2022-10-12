@@ -76,7 +76,7 @@ nav:
   - Getting started: index.md
   - Requests: requests.md
   - Responses: responses.md
-  - Types: types.md
+  - Custom types: types.md
   - Authentication:
       - Authentication - Introduction: authentication/index.md
       - Generate access token: authentication/token.md
