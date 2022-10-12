@@ -107,10 +107,10 @@ For validation errors, iumiCash returns the `HTTP 400 Bad Request` status code.
 
     !!! danger
         
-        Be carefull! For `HTTP 5xx` status codes, iumiCash can send **NOT** `application/json` response type. 
-        It may happen when iumiCash servers somehow is down. 
-        `HTTP 5xx` status codes in most cases sent by `reverse proxies` e.g. 
-        [nginx](https://nginx.org/), [traefik](https://traefik.io/) in `text/plain` response type.
+        Be carefull! In the event of `HTTP 5xx` error status codes, iumiCash API will **NOT** return `application/json` content type header in the response. 
+        This may happen during iumiCash servers being unreachable or unresponsive. 
+        `HTTP 5xx` status codes are returned in `text/plain` response type by the server itself (not by the API application), e.g. 
+        [nginx](https://nginx.org/), [traefik](https://traefik.io/) .
 
     ```
     {
