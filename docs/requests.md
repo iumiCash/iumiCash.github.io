@@ -7,12 +7,12 @@ the URL to the API service, the URI to a resource to query, submit data to, upda
 and one or more HTTP request headers.
 
 !!! Tip
-    The URL to the API service is either:
+    The URL's to the API services are:
 
     * Sandbox: `https://sandbox-api.iumi.cash`
     * Production: `https://api.iumi.cash`
 
-Optionally, you can include `query parameters` on `GET` calls to filter,
+Optionally, you can include `query parameters` in `GET` calls to filter,
 limit the size of, and sort the data in the responses.
 
 !!! Tip

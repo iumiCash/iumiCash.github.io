@@ -2,7 +2,7 @@
 
 ## Getting started
 
-The iumiCash uses [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API for interaction.
+iumiCash uses [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API for interaction and integration with third-party vendors and partners.
 
 The API uses standard verbs and returns HTTP response codes and JSON-encoded responses.
 
