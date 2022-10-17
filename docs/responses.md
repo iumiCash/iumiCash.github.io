@@ -132,7 +132,7 @@ To prevent validation errors, ensure that parameters are the right type and conf
 
     `field` *string*
     
-    :    Field which contains the error.
+    :    Field containing the error.
 
     `message` *string*
     
