@@ -14,7 +14,7 @@ Most `POST`, `PUT`, and `PATCH` calls require a JSON request body.
 
 ## URL
 
-iumiCash offers multiple URL's to its API services, which are a part of credentials:
+iumiCash offers multiple URL's to its API services, which are provided by iumiCash together with credentials:
 
 * Sandbox URL: used for testing purposes only and does not affect production data.
 * Production URL: used for real data operations.
