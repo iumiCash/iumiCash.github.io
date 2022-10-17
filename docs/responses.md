@@ -109,7 +109,7 @@ To prevent validation errors, ensure that parameters are the right type and conf
         Be careful! In the event of `HTTP 5xx` error status codes, iumiCash API will **NOT** return `application/json` content type header in the response. 
         This may happen while iumiCash servers are unreachable or unresponsive. 
         `HTTP 5xx` status codes are returned in `text/plain` response type by the server itself, e.g. [apache](https://httpd.apache.org/),
-        [nginx](https://nginx.org/), [traefik](https://traefik.io/) .
+        [nginx](https://nginx.org/), [traefik](https://traefik.io/).
 
     ```
     {
