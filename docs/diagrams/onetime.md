@@ -53,7 +53,7 @@ The following sequence diagram shows how one-time payment works.
 
     5. Redirect to `redirect_uri`
     :   iumiCash API redirects the user to `redirect_uri` specified by the vendor at step 2. 
-        The redirect URL will include `AUTH_CODE` in query parameters. See [authorization code] for more information.
+        The redirect URL will include `AUTH_CODE` in query parameters. See [authorization code][authorization code] for more information.
 
     6. Obtain `access_token` from /oauth/token/
     :   The vendor makes a request to /oauth/token/ with the `AUTH_CODE` obtained in the previous step. See [token request][token] for more information.
