@@ -115,11 +115,12 @@ This flow shows a call made by a `vendor`. For example, when working with [order
 ???+ example "Examples"
 
     === "Request"
-        This example shows a request to obtain **access token**
+        This example shows a request to obtain **access token**.
         
         !!! note
             
-            This examples shows `client_credentials` **grant_type** flow. See [code] or [refresh] for other flows.
+            This example shows `client_credentials` **grant_type** flow. See [code] or [refresh] for other flows.
+
         ??? Tip
             
             If you are using `curl` for making requests, you can pass your client_id and client_secret by format
@@ -162,7 +163,7 @@ This flow shows a call made by a `vendor`. For example, when working with [order
 Use this flow when your `access_token` has expired.
 
 !!! note "Refresh token"
-    Refresh tokens has infinite lifetime duration.
+    A refresh token has infinite lifetime duration.
 
 ???+ example "Examples"
 
@@ -170,7 +171,6 @@ Use this flow when your `access_token` has expired.
         This example shows a request to refresh an access token.
         
         !!! note
-            
             This example shows `refresh_token` **grant_type** flow. See [client credentials] or [code] for other flows.
 
         ??? Tip

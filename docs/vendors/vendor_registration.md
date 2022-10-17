@@ -12,7 +12,7 @@ For additional security, iumiCash may require vendors to provide the details of 
 
 !!! warning "Security tip"
 
-    Be careful, do not expose your **client_secret** to others
+    Be careful! Do not expose your **client_secret** to others
 
 
 [development page]: ../vendors/development_page.md

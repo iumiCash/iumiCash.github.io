@@ -11,10 +11,4 @@ Prior to making calls via a REST API integration, an access token must be reques
 **client_id** and **client_secret** are created by iumiCash representatvies on request and shared in a secure format.
 
 
-
-!!! Tip
-
-    For more information see [vendor registration].
-
-
 [development page]: ../vendors/development_page.md
