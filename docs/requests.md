@@ -4,7 +4,7 @@
 
 In order to retrieve, submit, update or delete data, a REST API request is created. 
 A typical REST API request includes HTTP methods (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`), 
-the URL to the API service, the URI with query parameters. 
+the URL to the API service and the URI with query parameters. 
 A REST API request may include one or more HTTP request headers.
 
 Optionally, `GET` calls may include query parameters to filter, limit the size of, and sort the data in the responses. 
