@@ -2,7 +2,7 @@
 
 ## Get order API
 
-Orders are retrieved using the following HTTP method and end-point combination:
+Orders are retrieved using a combination of an HTTP method and an end-point as follows:
 
 `POST /api/v1/orders/<order_id>/`
 
@@ -59,7 +59,7 @@ Orders are retrieved using the following HTTP method and end-point combination:
 
     `items` *list of [*item object*](#item)*
 
-    :    Order items in the order.
+    :    Items included in the order.
 
     `links` *list of [*HATEOAS links*](#hateoas)*
     

@@ -2,7 +2,7 @@
 
 ## Create order API
 
-Orders are created using the following HTTP method and end-point combination:
+Orders are created using a combination of an HTTP method and an end-point as follows:
 
 `POST /api/v1/orders/`
 
@@ -51,7 +51,7 @@ Orders are created using the following HTTP method and end-point combination:
 
     `created_at` *datetime*
     
-    :    Date and time of the order initial creation in ISO format.
+    :    Date and time of the order creation in ISO format.
 
     `updated_at` *datetime*
     
@@ -73,7 +73,7 @@ Orders are created using the following HTTP method and end-point combination:
 
     `links` *list of [*HATEOAS links*](#hateoas)*
     
-    :    An array of HATEOAS links related to this order processing (such as to get the latest status of the order, etc.).
+    :    An array of HATEOAS links related to this order processing (for example, to get the latest status of the order).
 
 !!! tip
     If the vendor failed to get the order details upon creation, then the vendor can submit a request via iumiCash API separately to get the details of the order.
@@ -179,12 +179,10 @@ Request and response objects
 ???+ info "Description"
 
     `link` *URL string*
-    :   The complete target URL. To make the related call, combine the method with this `link`.
+    :   The complete target URL used to make the related call.
     
     `rel` *enum*
-    :   The link relation type.
-        
-        Possible values:
+    :   The link relation type. Possible values are:
        
         * `self`
         * `approve`
@@ -192,9 +190,7 @@ Request and response objects
         * `cancel`
 
     `method` *enum*
-    :   The HTTP method required to make the related call. 
-        
-        Possible values:
+    :   The HTTP method required to make the related call. Possible values are:
         
         * `GET`
         * `POST`
@@ -204,7 +200,7 @@ Request and response objects
 
 ???+ info "Description"
 
-    Possible values may be restricted to a particular vendor and include:
+    Currency values may be restricted for a particular vendor. Possible values are:
 
     * `NZD`
     * `SBD`
