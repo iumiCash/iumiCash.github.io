@@ -1,4 +1,4 @@
-# Vendors - Introduction
+# Introduction to vendors
 
 A `Vendor` is a third-party system integrated with iumiCash for the purpose of using iumiCash as one of the payment methods.
 
