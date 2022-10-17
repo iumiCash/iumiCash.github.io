@@ -3,8 +3,8 @@
 ## API responses
 
 iumiCash API calls return HTTP status codes. Some API calls also return JSON response bodies 
-that include information about the resource including one or more contextual [HATEOAS] links. 
-You can use these links to request more information about or some other prebuilt links to work with resources. 
+that include information about the resource including one or more contextual [HATEOAS] links.
+HATEOAS links can be used to request further information or submit calls to operate with data based on prebuilt links returned by API. 
 
 ## HTTP status codes
 
@@ -25,11 +25,7 @@ For successful requests, iumiCash returns `HTTP 2xx` status codes.
 
 ### Failed requests
 
-For failed requests, iumiCash returns `HTTP 4xx` status codes if something passed 
-in the request has an error or `HTTP 5xx` status codes when something is wrong on our end 
-with a server or service.
-
-For authentication specific `HTTP 4xx` status codes, see [Authorization errors].
+Failed requests return either `HTTP 4xx` status codes or `HTTP 5xx` status codes depending on the cause of the failure.
 
 ???+ info "Response"
 
@@ -44,30 +40,36 @@ For authentication specific `HTTP 4xx` status codes, see [Authorization errors].
     `field_errors` *list of [*object*](#field-error)*
     
     :    List of errors. 
+
+
+For failed requests that are returned by iumiCash API the HTTP status codes are in the range of 4xx. 
+For authentication specific `HTTP 4xx` status codes, see [Authorization errors].
     
 ???+ info "HTTP 4xx"
 
     `HTTP 4xx` status code description
     
-    | Status code | Description | Possible causes and solutions | 
+    | Status code | Error code | Description | 
     | ----------- | ----------- | ----------------------------- |
-    | `HTTP 400 Bad Request` | `USER_PAYMENT_LIMIT` | The user has set settings on the iumiCash side that do not allow this vendor to process this request on behalf of this user  |
-    | `HTTP 400 Bad Request` | `USER_NOT_ACTIVE` | It is not possible to make a request on behalf of this user, since this user is no longer active in iumiCash |
-    | `HTTP 400 Bad Request` | `ACCOUNT_BALANCE_IS_LOW` | It is impossible to make a request due to the fact that the user does not have enough money on the iumiCash balance |
-    | `HTTP 400 Bad Request` | `DISABLED_BY_USER` | The user has disabled the ability to perform this action for the current vendor |
-    | `HTTP 400 Bad Request`  | The request is not well-formed, syntactically incorrect, or violates schema. | See [Validation errors]. The server could not understand the request. Can be one of this: <ul><li>The API cannot convert the payload data</li><li>The data is not in the expected data format</li><li>A required field is not available</li><ul> | 
-    | `HTTP 404 Not Found` | A specified resource does not exist | The server did not find anything that matches the requested URI. Either the URI is incorrect or the resource is not available. For example, no data exists in the database at that key. |
-    | `HTTP 405 Method Not Allowed` | The server does not implement the requested HTTP method. | The service or resource does not support the requested HTTP method. |
-    | `HTTP 422 Unprocessable Entity` | The API cannot complete the requested action, or the request action is semantically incorrect or fails business validation. | The server could not understand the request schema. |
+    | `HTTP 400 Bad Request` | `USER_PAYMENT_LIMIT` | The user set limits to the vendor to process this request in the amount required  |
+    | `HTTP 400 Bad Request` | `USER_NOT_ACTIVE` | The user is no longer active in iumiCash |
+    | `HTTP 400 Bad Request` | `ACCOUNT_BALANCE_IS_LOW` | The user does not have sufficient iumiCash balance to fulfill this transaction |
+    | `HTTP 400 Bad Request` | `DISABLED_BY_USER` | The user restricted the vendor to process this request |
+    | `HTTP 400 Bad Request`  | `INVALID_REQUEST` | The server could not understand the request. Can be one of this: <ul><li>The API cannot convert the payload data</li><li>The data is not in the expected data format</li><li>A required field is not available</li><ul> | 
+    | `HTTP 404 Not Found` | `RESOURCE_NOT_FOUND` | The server did not find anything that matches the requested URI. Either the URI is incorrect, or the resource is not available. For example, no data exists in the database at that key. |
+    | `HTTP 405 Method Not Allowed` | `METHOD_NOT_SUPPORTED` | The service or resource does not support the requested HTTP method. |
+    | `HTTP 422 Unprocessable Entity` | `UNPROCESSIBLE_ENTITY` | The API cannot complete the requested action due to business validation or other issues. |
+
+For failed requests that are returned by the API server (typically when iumiCash API is unreachable) the HTTP status codes are in the range of 5xx.
     
 ???+ info "HTTP 5xx"
 
-    `HTTP 5xx` status code description
+    `HTTP 5xx` status codes description
     
-    | Status code | Description | Possible causes and solutions | 
+    | Status code | Error code | Description | 
     | ----------- | ----------- | ----------------------------- |
-    | `HTTP 500 Internal Server Error`  | An internal server error has occurred. | A system or application error occurred. Although the client appears to provide a correct request, something unexpected occurred on the server. | 
-    | `HTTP 503 Service Unavailable` | Service Unavailable. | The server cannot handle the request for a service due to temporary maintenance. |
+    | `HTTP 500 Internal Server Error`  | Not applicable | A system or application error occurred. Although the client appears to provide a correct request, something unexpected occurred on the server. | 
+    | `HTTP 503 Service Unavailable` | Not applicable | The server cannot handle the request for a service due to temporary maintenance. |
     
 
 
@@ -76,16 +78,14 @@ For authentication specific `HTTP 4xx` status codes, see [Authorization errors].
 iumiCash follows industry standard OAuth 2.0 authorization protocol and returns the 
 `HTTP 400`, `HTTP 401`, `HTTP 403` status codes for authorization errors. 
 
-!!! Tip
-
-    Most of them usually access token-related issues and can be cleared by making sure 
-    that the token is present and hasn't expired.
+Most of them usually access token-related issues and can be cleared by making sure 
+that the token is present and hasn't expired.
 
 ???+ info "HTTP 4xx"
 
     `HTTP 4xx` status code description
     
-    | Status code | Description | Possible causes and solutions | 
+    | Status code | Error code | Description | 
     | ----------- | ----------- | ----------------------------- |
     | `HTTP 400 Bad Request`  | For example: <ul><li>Incorrect response_type</li><li>Unsupported grant_type</li><li>Incorrect redirect_uris etc.</li></ul> | Check your request body or see possible data in specified resourse. | 
     | `HTTP 401 Unauthorized` | For example: <ul><li>Authorization header is not present</li><li>Invalid client credentials</li><li>Invalid refresh_token</li><li>Invalid authorization code etc</li></ul> |
@@ -95,9 +95,7 @@ iumiCash follows industry standard OAuth 2.0 authorization protocol and returns 
 
 For validation errors, iumiCash returns the `HTTP 400 Bad Request` status code.
 
-!!! Tip
-
-    To prevent validation errors ensure that parameters are the right type and conform to constraints.
+To prevent validation errors, ensure that parameters are the right type and conform to constraints.
 
 ### Examples
 
@@ -107,9 +105,9 @@ For validation errors, iumiCash returns the `HTTP 400 Bad Request` status code.
 
     !!! danger
         
-        Be carefull! In the event of `HTTP 5xx` error status codes, iumiCash API will **NOT** return `application/json` content type header in the response. 
-        This may happen during iumiCash servers being unreachable or unresponsive. 
-        `HTTP 5xx` status codes are returned in `text/plain` response type by the server itself (not by the API application), e.g. 
+        Be careful! In the event of `HTTP 5xx` error status codes, iumiCash API will **NOT** return `application/json` content type header in the response. 
+        This may happen while iumiCash servers are unreachable or unresponsive. 
+        `HTTP 5xx` status codes are returned in `text/plain` response type by the server itself, e.g. [apache](https://httpd.apache.org/),
         [nginx](https://nginx.org/), [traefik](https://traefik.io/) .
 
     ```
@@ -133,7 +131,7 @@ For validation errors, iumiCash returns the `HTTP 400 Bad Request` status code.
 
     `field` *string*
     
-    :    Field where error was happen.
+    :    Field which contains the error.
 
     `message` *string*
     

@@ -2,7 +2,7 @@
 
 ## Create order API
 
-Creates an order
+Orders are created using the following HTTP method and end-point combination:
 
 `POST /api/v1/orders/`
 
@@ -11,14 +11,18 @@ Creates an order
 
 ???+ info "Header parameters"
 
-    `RequestId` *string*
-    :    Idempotency key for request. See [idempotency] for more information.
-
     `Authorization` *string* **required**
-    :    To make REST API calls, include the bearer token in this header with the `Bearer` authentication scheme. The value is `Bearer <Access-Token>`
+    :    The identifier (such as a bearer token) is required to validate the third-party system to access the resource. 
+         To make REST API calls, include the bearer token in this header with the `Bearer` authentication scheme. 
+         The value is `Bearer <Access-Token>`. To get access token see access token.
 
     `Content-Type` *string* **required**
-    :    The media type. Required for operations with a request body. The value is `application/<format>`, where format is `json`.
+    :    The media type is required for operations with a request body. 
+         The value is `application/<format>`, where format is `json`.
+    
+    `RequestId` *string*
+    :    The idempotency key is used to correlate request payloads with response payloads. See [idempotency] for more information.
+
 
 
 ### Request
@@ -26,36 +30,36 @@ Creates an order
 ???+ info "Request body"
 
     `external_id` *string* **required**
-    :    Unique identifier of your system. iumiCash will save this to this order, 
-         so you can further identify iumiCash order with your order instance.
+    :    This is a unique identifier for the vendor’s system. iumiCash saves this identifier as part of the order record. 
+         Orders can be cross-checked between iumiCash and the vendors system using this identifier.
 
     `items` *list of [*item object*](#item)* **required**
-    :    Order items in the order.
+    :    Items included in the order.
 
 
 ### Response
 
 ???+ success "Response"
 
-    `id` *UUID* **unique**
+    `id` *[ID][identifier]* **unique**
     
-    :    iumiCash identifier. Using to unique identify resourses (in this example, order etc.)
+    :    Unique identifier of the order as per iumiCash system.
 
     `external_id` *string* **unique**
 
-    :    Unique identifier of your system. 
+    :    Unique identifier of the order as per the vendor’s system. 
 
     `created_at` *datetime*
     
-    :    Created time of the order in ISO format.
+    :    Date and time of the order initial creation in ISO format.
 
     `updated_at` *datetime*
     
-    :    Updated time of the order in ISO format.
+    :    Date and time of the order last update in ISO format.
 
     `status` *enum* 
     
-    :    Order status. Can be one of follows:
+    :    The order status can be one of the following:
     
          * `created`
          * `approved`
@@ -65,13 +69,14 @@ Creates an order
 
     `items` *list of [*item object*](#item)*
 
-    :    Order items in the order.
+    :    Items included in the order.
 
     `links` *list of [*HATEOAS links*](#hateoas)*
     
-    :    An array of request-related HATEOAS links. For example, 
-         to complete payer approval, use `approve` link to redirect the payer.
+    :    An array of HATEOAS links related to this order processing (such as to get the latest status of the order, etc.).
 
+!!! tip
+    If the vendor failed to get the order details upon creation, then the vendor can submit a request via iumiCash API separately to get the details of the order.
 
 ### Examples
 
@@ -79,7 +84,7 @@ Creates an order
 
     === "Request"
 
-        Example request with cURL. You can make this request in any programming language.
+        An example request using cURL.
 
         ```bash
         curl -v -X POST https://api.iumi.cash/api/v1/orders/ \
@@ -110,7 +115,7 @@ Creates an order
 
         ```bash
         {
-          "id": "42481508-af81-43b9-82dd-d47d9e040ece",
+          "id": "542c2b97bac0595474108b48",
           "external_id": "123456",
           "created_at": "2022-09-12T13:27:09.860466",
           "updated_at": "2022-09-12T13:27:09.860466",
@@ -128,7 +133,7 @@ Creates an order
           ],
           "links": [
             {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
+              "link": "https://api.iumi.cash/api/v1/orders/542c2b97bac0595474108b48/",
               "rel": "self",
               "method": "get"
             }
@@ -155,7 +160,7 @@ Request and response objects
     :   Amount object.
     
     `count` *integer*
-    :   Count of this item.
+    :   Number of the specific item in the order.
 
 
 ### amount
@@ -163,10 +168,10 @@ Request and response objects
 ???+ info "Description"
 
     `value` *Decimal*
-    :   amount
+    :   Price of one item in the order.
     
     `currency_code` *enum*. See [available currencies](#currencies).
-    :   Currency of item
+    :   Currency of the item price.
 
 
 ### HATEOAS
@@ -181,7 +186,7 @@ Request and response objects
         
         Possible values:
        
-        * `self` - do `method` with current resource.
+        * `self`
         * `approve`
         * `capture`
         * `cancel`
@@ -199,10 +204,11 @@ Request and response objects
 
 ???+ info "Description"
 
-    Possible values:
+    Possible values may be restricted to a particular vendor and include:
 
-    * `SBD`
     * `NZD`
+    * `SBD`
+    * `USD`
 
 
 [idempotency]: ../idempotency.md

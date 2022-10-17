@@ -2,35 +2,36 @@
 
 ## API requests
 
-To make a REST API request, you combine the HTTP `GET`, `POST`, `PUT`, `PATCH`, or `DELETE` method, 
-the URL to the API service, the URI to a resource to query, submit data to, update, or delete,
-and one or more HTTP request headers.
+In order to retrieve, submit, update or delete data, a REST API request is created. 
+A typical REST API request includes HTTP methods (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`), 
+the URL to the API service, the URI with query parameters. 
+A REST API request may include one or more HTTP request headers.
 
-!!! Tip
-    The URL's to the API services are:
+Optionally, `GET` calls may include query parameters to filter, limit the size of, and sort the data in the responses. 
+`GET` calls do not include JSON request body.
 
-    * Sandbox: `https://sandbox-api.iumi.cash`
-    * Production: `https://api.iumi.cash`
+Most `POST`, `PUT`, and `PATCH` calls require a JSON request body.
 
-Optionally, you can include `query parameters` in `GET` calls to filter,
-limit the size of, and sort the data in the responses.
+## URL
 
-!!! Tip
+iumiCash offers multiple URL's to its API services, which are a part of credentials:
 
-    Most `POST`, `PUT`, and `PATCH` calls require a JSON request body.
-
+* Sandbox URL: used for testing purposes only and does not affect production data
+* Production URL: used for real data operations
 
 ## HTTP request headers
 
 `Authorization` *string*
-:    To make REST API calls, include the bearer token in this header with the `Bearer` authentication scheme. 
+:    The identifier (such as a bearer token) is required to validate the third-party system to access the resource.
+     To make REST API calls, include the bearer token in this header with the `Bearer` authentication scheme. 
      The value is `Bearer <Access-Token>`. To get `access token` see [access token].
 
 `Content-Type` *string*
-:    The media type. Required for operations with a request body. The value is `application/<format>`, where format is `json`.
+:    The media type is required for operations with a request body. The value is `application/<format>`, where format is `json`.
 
 `RequestId` *string*
-:    Idempotency key for request. See [idempotency] for more information.
+:    The idempotency key is used to correlate request payloads with response payloads. See [idempotency] for more information.
+
 
 
 [idempotency]: idempotency.md

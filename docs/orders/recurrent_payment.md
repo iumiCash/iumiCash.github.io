@@ -1,7 +1,8 @@
 # Recurrent payments
 
-The logic of recurrent payments is similar to single payments, that is, 
-the responsibility for sending a request for weekly, monthly or any other 
-period of time for creating an order lies on a vendor's side.
+Recurrent payments are triggered by the vendor’s system and are processed by 
+iumiCash the same way the one-time payments are executed. The responsibility 
+for initiating recurrent payment requests at the right time for the correct 
+services and amounts lies on the vendor’s side.
 
-See [One-Time Payment](create_order.md) for more details about order creating.
+See [One-Time Payment](create_order.md) for more details about order creation.

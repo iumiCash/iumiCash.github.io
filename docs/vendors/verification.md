@@ -2,15 +2,13 @@
 
 ## Verification
 
-Because everyone can register in the iumiCash as developer and accept payments,
-a iumiCash needs to manually verify each vendor.
-
-!!! tip
-    You can check your verification status in [development page].
-
-## How to verify yourself?
-
-To get verification status you have to contact administrators of the iumiCash.
+iumiCash follows manual procedures for verification of each vendor. 
+iumiCash representatives may request additional information from the vendor to verify 
+the account prior to registering the vendor in the system. This may include contact details, 
+license, and other business-related information.
 
 
-[development page]: ../vendors/development_page.md
+## How to check verification status?
+
+Vendors must contact iumiCash representatives to obtain the verification status.
+

@@ -79,19 +79,17 @@ nav:
   - Custom types: types.md
   - Authentication:
       - Authentication - Introduction: authentication/index.md
-      - Generate access token: authentication/token.md
       - Authorization code request: authentication/authorize.md
+      - Generate access token: authentication/token.md
   - Vendors:
       - Vendors - Introduction: vendors/index.md
       - Registration: vendors/vendor_registration.md
       - Verification: vendors/verification.md
-      - Development page: vendors/development_page.md
   - Orders:
       - Orders: orders/index.md
       - Create order: orders/create_order.md
       - Get order: orders/get.md
       - Recurrent payments: orders/recurrent_payment.md
   - Flow diagrams:
-      - Payment: diagrams/onetime.md
-      - Recurrent payment: diagrams/recurrent.md
+      - One-Time Payment: diagrams/onetime.md
   - Idempotency: idempotency.md

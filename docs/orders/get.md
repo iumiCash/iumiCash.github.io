@@ -1,11 +1,8 @@
 # Get order
 
-If the vendor missed response from iumiCash for some reason, 
-then he can independently ask iumiCash about the status of the order.
-
 ## Get order API
 
-Get an order
+Orders are retrieved using the following HTTP method and end-point combination:
 
 `POST /api/v1/orders/<order_id>/`
 
@@ -15,7 +12,7 @@ Get an order
 ???+ info "Path parameters"
 
     `order_id` *[ID][identifier]*
-    :    iumiCash order identifier.
+    :    Unique identifier of the order as per iumiCash system.
 
 
 ### Headers
@@ -23,35 +20,37 @@ Get an order
 ???+ info "Header parameters"
 
     `Authorization` *string* **required**
-    :    To make REST API calls, include the bearer token in this header with the `Bearer` authentication scheme. The value is `Bearer <Access-Token>`
+    :    The identifier (such as a bearer token) is required to validate the third-party system to access the resource. 
+         To make REST API calls, include the bearer token in this header with the `Bearer` authentication scheme. 
+         The value is `Bearer <Access-Token>`. To get access token see access token.
 
     `Content-Type` *string* **required**
-    :    The media type. Required for operations with a request body. The value is `application/<format>`, where format is `json`.
+    :    The media type is required for operations with a request body. The value is `application/<format>`, where format is `json`.
 
 
 ### Response
 
 ???+ success "Response"
 
-    `id` *UUID* **unique**
+    `id` *[ID][identifier]* **unique**
     
-    :    iumiCash identifier. Using to unique identify resourses (in this example, order etc.)
+    :    Unique identifier of the order as per iumiCash system.
 
     `external_id` *string* **unique**
 
-    :    Unique identifier of your system. 
+    :    Unique identifier of the order as per the vendor’s system. 
 
     `created_at` *datetime*
     
-    :    Created time of the order in ISO format.
+    :    Date and time of the order initial creation in ISO format.
 
     `updated_at` *datetime*
     
-    :    Updated time of the order in ISO format.
+    :    Date and time of the order last update in ISO format.
 
     `status` *enum* 
     
-    :    Order status. Can be one of follows:
+    :    The order status can be one of the following:
     
          * `created`
          * `approved`
@@ -64,8 +63,8 @@ Get an order
 
     `links` *list of [*HATEOAS links*](#hateoas)*
     
-    :    An array of request-related HATEOAS links. For example, 
-         to complete payer approval, use `approve` link to redirect the payer.
+    :    An array of HATEOAS links related to this order processing (such as to get the latest status of the order, etc.).
+
 
 
 ### Examples
@@ -74,10 +73,10 @@ Get an order
 
     === "Request"
 
-        Example request with cURL. You can make this request in any programming language.
+        An example request using cURL.
 
         ```bash
-        curl -v -X POST https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/ \
+        curl -v -X POST https://api.iumi.cash/api/v1/orders/542c2b97bac0595474108b48/ \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer <Access-Token>"'
         ```
@@ -88,7 +87,7 @@ Get an order
 
         ```bash
         {
-          "id": "42481508-af81-43b9-82dd-d47d9e040ece",
+          "id": "542c2b97bac0595474108b48",
           "external_id": "123456",
           "created_at": "2022-09-12T13:27:09.860466",
           "updated_at": "2022-09-12T13:27:09.860466",
@@ -106,7 +105,7 @@ Get an order
           ],
           "links": [
             {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
+              "link": "https://api.iumi.cash/api/v1/orders/542c2b97bac0595474108b48/",
               "rel": "self",
               "method": "get"
             }

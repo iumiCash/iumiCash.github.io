@@ -18,7 +18,7 @@
          Example: `Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==`
 
     `Content-Type` *string* **required**
-    :    The media type. Required for operations with a request body. The value is `application/<format>`, where format is `json`.
+    :    The media type is required for operations with a request body. The value is `application/<format>`, where format is `json`.
 
 
 ### Request
@@ -28,7 +28,7 @@
     `grant_type` *enum* **required**
     :    Specification by OAuth 2.0 protocol. 
     
-        Our backend implements follows:
+        iumiCash backend supports the following grant types:
         
         * `client_credentials`
         * `authorization_code`
@@ -75,7 +75,7 @@
 
     `access_token` *string*
     
-    :    Identifies the actual token used to call resourses.
+    :    Identifies the actual token used to call resources.
 
     `token_type` *string*
     
@@ -100,22 +100,22 @@
 
 ### Examples
 
-In this section shown different `authorization`/`token obtaining` flows
+This section shows the difference between `authorization` and `token obtaining` flows.
 
 
 #### Client credentials
 
-You need this flow when you make calls as `vendor`. For example, when working with [order].
+This flow shows a call made by a `vendor`. For example, when working with [order].
 
 !!! Tip 
     
-    If you want to make API calls as `end-user`, see [code] article.
+    For API calls made by the end-user, see [code] article.
 
 
 ???+ example "Examples"
 
     === "Request"
-        This example shows request to obtain **access token**
+        This example shows a request to obtain **access token**
         
         !!! note
             
@@ -167,11 +167,11 @@ Use this flow when your `access_token` has expired.
 ???+ example "Examples"
 
     === "Request"
-        This example shows request to refresh your access token
+        This example shows a request to refresh an access token.
         
         !!! note
             
-            This examples shows `refresh_token` **grant_type** flow. See [client credentials] or [code] for other flows.
+            This example shows `refresh_token` **grant_type** flow. See [client credentials] or [code] for other flows.
 
         ??? Tip
             
@@ -214,7 +214,7 @@ Use this flow when your `access_token` has expired.
 
 #### Authorization code
 
-Use this flow when you need access API calls as `end-user`.
+This flow is used to access API calls by `end-user`.
 
 !!! Tip
 
@@ -226,7 +226,7 @@ Use this flow when you need access API calls as `end-user`.
         
         !!! note
             
-            This examples shows `authorization_code` **grant_type** flow. See [client credentials] or [refresh] for other flows.
+            This example shows `authorization_code` **grant_type** flow. See [client credentials] or [refresh] for other flows.
 
         ??? Tip
             

@@ -1,7 +1,7 @@
-# One-Time payment flow
+# One-time payment flow
 
 
-This sequence diagram shows how One-Time payment works.
+The following sequence diagram shows how one-time payment works.
 
 ???+ "Diagram"
 
@@ -31,47 +31,47 @@ This sequence diagram shows how One-Time payment works.
 
     ```
 
+The following sequence diagram shows how one-time payment works.
+
 ??? info "Step descriptions"
 
     1. Click **Pay via iumiCash**
-    :   The end user clicks button `Pay via iumiCash` on the vendor's site.
+    :   The end-user clicks button `Pay via iumiCash` (or similar) in the vendor's user interface.
     
-    2. Authorization Code request to /oauth/authorize/
-    :   The vendor constructs URL to obtain user's credentials.
+    2. Authorization Code request is sent to /oauth/authorize/
+    :   The vendor constructs URL to obtain user's credentials. 
 
         See [authorize request][authorize] for detailed request.
     
-    3. Redirect to login/approve
-    :   The iumiCash redirects user to login/approve page. On this page shown
-        which vendor wants to obtain user's credentials and which credentials vendor wants.
+    3. Redirect user to authorization page
+    :   The iumiCash redirects user to an authorization page where the list of permissions the user grants the vendor 
+        and the application details are displayed.
 
         !!! tip
-            Also, on this page shown [vendor's verification status][vendor verification].
+            This page also shows the [vendor's verification status][vendor verification].
     
-    4. Authenticate and approve
-    :   User logins and approves vendor request.
+    4. Authenticate
+    :   By logging in the user approves the vendor to use his iumiCash account for payments.
 
     5. Redirect to `redirect_uri`
-    :   The iumiCash redirects user to `redirect_uri`, which specified by vendor
-        at step 2. In redirected URL the iumiCash will add `AUTH_CODE` in query parameters 
-        (See [authorization code])
+    :   iumiCash API redirects the user to `redirect_uri` specified by the vendor at step 2. 
+        The redirect URL will include `AUTH_CODE` in query parameters (see authorization code).
 
     6. Obtain `access_token` from /oauth/token/
-    :   The vendor makes request to /oauth/token/ (see [token request][token]) 
-        with obtained `AUTH_CODE` from previous step
+    :   The vendor makes a request to /oauth/token/ (see [token request][token]) with the `AUTH_CODE` obtained in the previous step
 
     7. Validate
-    :   The iumiCash validate request.
+    :   iumiCash API validates the request.
 
-    8. Return client's `access_token` and `refresh_token`
-    :   The iumiCash returns client's `access_token` and `refresh_token`. 
+    8. Return the API client `access_token` and `refresh_token`
+    :   iumiCash API server returns a pair of `access_token` and `refresh_token` to the API client. 
         See [access token] or [refresh token] for more information
 
     9. Create *order*
-    :   The vendor constructs [order data] and makes [create order] request.
+    :   The vendor constructs [order data] and submits [create order] request.
 
     10. Return created order
-    :   The iumiCash returns [order].
+    :   The iumiCash API returns the details of the created [order].
 
 
 [access token]: ../authentication/token.md#authorization-code

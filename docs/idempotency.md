@@ -21,10 +21,10 @@ You can make idempotent calls any number of times without concern that the serve
 
     === "Request"
 
-        Example request with cURL.
+        An example request using cURL.
         
         !!! Tip
-            Here were are using `RequestId` idempotency key.
+            `RequestId` idempotency key is used in this example.
 
         ```bash hl_lines="4"
         curl -v -X POST https://api.iumi.cash/api/v1/orders/ \
@@ -55,7 +55,7 @@ You can make idempotent calls any number of times without concern that the serve
 
         ```bash
         {
-          "id": "42481508-af81-43b9-82dd-d47d9e040ece",
+          "id": "542c2b97bac0595474108b48",
           "external_id": "123456",
           "created_at": "2022-09-12T13:27:09.860466",
           "updated_at": "2022-09-12T13:27:09.860466",
@@ -74,7 +74,7 @@ You can make idempotent calls any number of times without concern that the serve
           ],
           "links": [
             {
-              "link": "https://api.iumi.cash/api/v1/orders/42481508-af81-43b9-82dd-d47d9e040ece/",
+              "link": "https://api.iumi.cash/api/v1/orders/542c2b97bac0595474108b48/",
               "rel": "self",
               "method": "get"
             }
