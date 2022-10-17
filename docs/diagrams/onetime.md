@@ -39,12 +39,10 @@ The following sequence diagram shows how one-time payment works.
     :   The end-user clicks button `Pay via iumiCash` (or similar) in the vendor's user interface.
     
     2. Authorization Code request is sent to /oauth/authorize/
-    :   The vendor constructs URL to obtain user's credentials. 
-
-        See [authorize request][authorize] for detailed request.
+    :   The vendor constructs URL to obtain user's credentials. See [authorize request][authorize] for detailed request.
     
     3. Redirect user to authorization page
-    :   The iumiCash redirects user to an authorization page where the list of permissions the user grants the vendor 
+    :   The iumiCash redirects user to an authorization page where the list of permissions 
         and the application details are displayed.
 
         !!! tip
@@ -55,10 +53,10 @@ The following sequence diagram shows how one-time payment works.
 
     5. Redirect to `redirect_uri`
     :   iumiCash API redirects the user to `redirect_uri` specified by the vendor at step 2. 
-        The redirect URL will include `AUTH_CODE` in query parameters (see authorization code).
+        The redirect URL will include `AUTH_CODE` in query parameters. See authorization code for more information.
 
     6. Obtain `access_token` from /oauth/token/
-    :   The vendor makes a request to /oauth/token/ (see [token request][token]) with the `AUTH_CODE` obtained in the previous step
+    :   The vendor makes a request to /oauth/token/ with the `AUTH_CODE` obtained in the previous step. See [token request][token] for more information.
 
     7. Validate
     :   iumiCash API validates the request.
