@@ -16,13 +16,13 @@ Most `POST`, `PUT`, and `PATCH` calls require a JSON request body.
 
 iumiCash offers multiple URL's to its API services, which are a part of credentials:
 
-* Sandbox URL: used for testing purposes only and does not affect production data
-* Production URL: used for real data operations
+* Sandbox URL: used for testing purposes only and does not affect production data.
+* Production URL: used for real data operations.
 
 ## HTTP request headers
 
 `Authorization` *string*
-:    The identifier (such as a bearer token) is required to validate the third-party system to access the resource.
+:    The identifier (such as a bearer token) is required to validate a third-party system to access a resource.
      To make REST API calls, include the bearer token in this header with the `Bearer` authentication scheme. 
      The value is `Bearer <Access-Token>`. To get `access token` see [access token].
 
