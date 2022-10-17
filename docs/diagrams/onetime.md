@@ -33,7 +33,7 @@ The following sequence diagram shows how one-time payment works.
 
 The following sequence diagram shows how one-time payment works.
 
-??? info "Step descriptions"
+??? info "Steps description"
 
     1. Click **Pay via iumiCash**
     :   The end-user clicks button `Pay via iumiCash` (or similar) in the vendor's user interface.
