@@ -77,14 +77,14 @@ nav:
   - Requests: requests.md
   - Responses: responses.md
   - Custom types: types.md
-  - Authentication:
-      - Authentication - Introduction: authentication/index.md
-      - Authorization code request: authentication/authorize.md
-      - Generate access token: authentication/token.md
   - Vendors:
       - Vendors - Introduction: vendors/index.md
       - Registration: vendors/vendor_registration.md
       - Verification: vendors/verification.md
+  - Authentication:
+      - Authentication - Introduction: authentication/index.md
+      - Authorization code request: authentication/authorize.md
+      - Generate access token: authentication/token.md
   - Orders:
       - Orders: orders/index.md
       - Create order: orders/create_order.md
