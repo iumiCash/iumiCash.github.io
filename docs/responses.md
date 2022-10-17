@@ -89,7 +89,7 @@ that the token is present and hasn't expired.
     | ----------- | ----------- | ----------------------------- |
     | `HTTP 400 Bad Request`  | INVALID_REQUEST | Check request body and possible data in the specified resourse. For example: <ul><li>Incorrect response_type.</li><li>Unsupported grant_type.</li><li>Incorrect redirect_uris.</li></ul> | 
     | `HTTP 401 Unauthorized` | INVALID_AUTHZ | Check authorization parameters for any errors. For example: <ul><li>Authorization header is not present.</li><li>Invalid client credentials.</li><li>Invalid refresh_token.</li><li>Invalid authorization code.</li></ul> | 
-    | `HTTP 403 Forbidden` | NOT_AUTHORIZED | Authorization failed due to insufficient permissions. Make sure that you have access to this resource. |
+    | `HTTP 403 Forbidden` | NOT_AUTHORIZED | Authorization failed due to insufficient permissions. Make sure that you have access to the related resource. |
 
 
 ### Validation errors
