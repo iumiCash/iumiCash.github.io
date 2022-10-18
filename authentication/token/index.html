@@ -1,0 +1,1147 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>Generate access token - iumiCash REST API</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../assets/css/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generate-access-token" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="iumiCash REST API" class="md-header__button md-logo" aria-label="iumiCash REST API" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            iumiCash REST API
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Generate access token
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="iumiCash REST API" class="md-nav__button md-logo" aria-label="iumiCash REST API" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    iumiCash REST API
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../requests/" class="md-nav__link">
+        Requests
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../responses/" class="md-nav__link">
+        Responses
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/" class="md-nav__link">
+        Custom types
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Vendors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Vendors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Vendors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vendors/" class="md-nav__link">
+        Introduction to vendors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vendors/vendor_registration/" class="md-nav__link">
+        Registration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vendors/verification/" class="md-nav__link">
+        Verification
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Authentication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Authentication" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Introduction to authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorize/" class="md-nav__link">
+        Authorization code request
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Generate access token
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Generate access token
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generate-access-token-api" class="md-nav__link">
+    Generate access token API
+  </a>
+  
+    <nav class="md-nav" aria-label="Generate access token API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    Headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-credentials" class="md-nav__link">
+    Client credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh-token" class="md-nav__link">
+    Refresh token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization-code" class="md-nav__link">
+    Authorization code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Orders
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Orders" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Orders
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orders/" class="md-nav__link">
+        Orders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orders/create_order/" class="md-nav__link">
+        Create order
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orders/get/" class="md-nav__link">
+        Get order
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orders/recurrent_payment/" class="md-nav__link">
+        Recurrent payments
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Flow diagrams
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Flow diagrams" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Flow diagrams
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/onetime/" class="md-nav__link">
+        One-time payment
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idempotency/" class="md-nav__link">
+        Idempotency
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generate-access-token-api" class="md-nav__link">
+    Generate access token API
+  </a>
+  
+    <nav class="md-nav" aria-label="Generate access token API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    Headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-credentials" class="md-nav__link">
+    Client credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh-token" class="md-nav__link">
+    Refresh token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization-code" class="md-nav__link">
+    Authorization code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="generate-access-token">Generate access token<a class="headerlink" href="#generate-access-token" title="Permanent link">&para;</a></h1>
+<h2 id="generate-access-token-api">Generate access token API<a class="headerlink" href="#generate-access-token-api" title="Permanent link">&para;</a></h2>
+<p><code>POST /api/v1/oauth/token/</code></p>
+<h3 id="headers">Headers<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h3>
+<details class="info" open="open">
+<summary>Header parameters</summary>
+<dl>
+<dt><code>Authorization</code> <em>string</em> <strong>required</strong></dt>
+<dd>
+<p>Separate your Base64-encoded <strong>client ID</strong> and <strong>client secret</strong> by a colon (:).</p>
+<p>Format:  <code>Basic {Your Base64-encoded client_id:client_secret}</code> without curly braces.</p>
+<p>Example: <code>Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==</code></p>
+</dd>
+<dt><code>Content-Type</code> <em>string</em> <strong>required</strong></dt>
+<dd>The media type is required for operations with a request body. The value is <code>application/&lt;format&gt;</code>, where format is <code>json</code>.</dd>
+</dl>
+</details>
+<h3 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h3>
+<details class="info" open="open">
+<summary>Request body</summary>
+<dl>
+<dt><code>grant_type</code> <em>enum</em> <strong>required</strong></dt>
+<dd>
+<p>Specification by OAuth 2.0 protocol. </p>
+<p>iumiCash backend supports the following grant types:</p>
+<ul>
+<li><code>client_credentials</code></li>
+<li><code>authorization_code</code></li>
+<li><code>refresh_token</code></li>
+</ul>
+</dd>
+<dt><code>redirect_uri</code> <em>URL string</em></dt>
+<dd>
+<p>If the redirect URI was included in the initial authorization request, 
+the service must require it in the token request as well. 
+The redirect URI in the token request must be an exact match of the redirect URI 
+that was used when generating the authorization code. </p>
+<p>The service must reject the request otherwise.</p>
+</dd>
+<dt><code>code</code> <em>string</em></dt>
+<dd>Specification by OAuth 2.0 protocol. </dd>
+<dd>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+ Required when <code>grant_type</code> is <code>authorization_code</code>. See <a href="#authorization-code">code</a> flow for details.</div>
+</dd>
+<dt><code>refresh_token</code> <em>string</em></dt>
+<dd>Specification by OAuth 2.0 protocol. </dd>
+<dd>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+Required when <code>grant_type</code> is <code>refresh_token</code>. See <a href="#refresh-token">refresh</a> flow for details.</div>
+</dd>
+<dt><code>state</code> <em>string</em></dt>
+<dd>Specification by OAuth 2.0 protocol. </dd>
+<dd>
+<details class="info">
+<summary>Info</summary>
+An opaque value used by the client to maintain state between the request and callback. 
+The authorization server includes this value when redirecting the user-agent back to the client. 
+The parameter SHOULD be used for preventing cross-site request forgery</details>
+</dd>
+</dl>
+</details>
+<h3 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h3>
+<details class="success" open="open">
+<summary>Response</summary>
+<dl>
+<dt><code>scope</code> <em>string</em></dt>
+<dd>
+<p>A list of space-separated permissions associated with the access token.</p>
+</dd>
+<dt><code>access_token</code> <em>string</em></dt>
+<dd>
+<p>Identifies the actual token used to call resources.</p>
+</dd>
+<dt><code>token_type</code> <em>string</em></dt>
+<dd>
+<p>Defines the type of token. It defaults to <code>Bearer</code>.</p>
+</dd>
+<dt><code>expires_in</code> <em>integer</em></dt>
+<dd>
+<p>Identifies the number of seconds until the access token expires.</p>
+</dd>
+<dt><code>refresh_token</code> <em>string</em> </dt>
+<dd>
+<p>Identifies the actual token used to refresh the access token.</p>
+</dd>
+<dt><code>refresh_token_expires_in</code> <em>integer</em> </dt>
+<dd>
+<p>Identifies the number of seconds until the refresh token expires.</p>
+</dd>
+<dt><code>nonce</code> <em>string</em> </dt>
+<dd>
+<p>A one-time use random string generated from server-specific data, used to prevent replay attacks.</p>
+</dd>
+</dl>
+</details>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>This section shows the difference between <code>authorization</code> and <code>token obtaining</code> flows.</p>
+<h4 id="client-credentials">Client credentials<a class="headerlink" href="#client-credentials" title="Permanent link">&para;</a></h4>
+<p>This flow shows a call made by a <code>vendor</code>. For example, when working with <a href="../../orders/">order</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For API calls made by the end-user, see <a href="#authorization-code">code</a> article.</p>
+</div>
+<details class="example" open="open">
+<summary>Examples</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>This example shows a request to obtain <strong>access token</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example shows <code>client_credentials</code> <strong>grant_type</strong> flow. See <a href="#authorization-code">code</a> or <a href="#refresh-token">refresh</a> for other flows.</p>
+</div>
+<details class="tip">
+<summary>Tip</summary>
+<p>If you are using <code>curl</code> for making requests, you can pass your client_id and client_secret by format</p>
+<p><code>-u "&lt;CLIENT_ID&gt;:&lt;CLIENT_SECRET&gt;"</code></p>
+<p>It is the same for passing <code>Authorization</code> header explicitly:</p>
+<p><code>-H "Authorization: Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==</code></p>
+</details>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    curl -v -X POST <span class="s2">&quot;https://api.iumi.cash/api/v1/oauth/token&quot;</span> <span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    -u <span class="s2">&quot;&lt;CLIENT_ID&gt;:&lt;CLIENT_SECRET&gt;&quot;</span> <span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    -d <span class="s1">&#39; \</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s1">    {</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s1">      &quot;grant_type&quot;: &quot;client_credentials&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s1">    }</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s1">    &#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>A successful request returns the <code>HTTP 200 OK</code> status code and a JSON response body.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   <span class="s2">&quot;scope&quot;</span>: <span class="s2">&quot;profile email https://api.iumi.cash/api/v1/recurrent&quot;</span>,
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>   <span class="s2">&quot;access_token&quot;</span>: <span class="s2">&quot;A21AAInqMcMvhHyuYQ0xIMSNbl4BIEwkvJ93HukaWZ7o3akLHD-5U9bFC2enYoVKzClY8kGl13TCyKAO25DKYEB1bPR3bRrXg&quot;</span>,
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   <span class="s2">&quot;token_type&quot;</span>: <span class="s2">&quot;Bearer&quot;</span>,
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>   <span class="s2">&quot;expires_in&quot;</span>: <span class="m">28800</span>,
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>   <span class="s2">&quot;refresh_token&quot;</span>: <span class="s2">&quot;eRtAQTVyGJedojtUbkMoHWWOdMMl5ujCDk_94gAA21AAInqMcMvhHyuYQ0-5U9bFenYoVKzClY8kGl13WWOdMMl5ujCDk_94gA&quot;</span>,
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>   <span class="s2">&quot;refresh_token_expires_in&quot;</span>: <span class="m">86400</span>,
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>   <span class="s2">&quot;nonce&quot;</span>: <span class="s2">&quot;2022-04-06T20:10:53ZtyLRwCnLB3eGapVvhCVLScK8IUTqwqz2yUmMEOQbTEg&quot;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h4 id="refresh-token">Refresh token<a class="headerlink" href="#refresh-token" title="Permanent link">&para;</a></h4>
+<p>Use this flow when your <code>access_token</code> has expired.</p>
+<div class="admonition note">
+<p class="admonition-title">Refresh token</p>
+<p>A refresh token has infinite lifetime duration.</p>
+</div>
+<details class="example" open="open">
+<summary>Examples</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Request</label><label for="__tabbed_2_2">Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>This example shows a request to refresh an access token.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example shows <code>refresh_token</code> <strong>grant_type</strong> flow. See <a href="#client-credentials">client credentials</a> or <a href="#authorization-code">code</a> for other flows.</p>
+</div>
+<details class="tip">
+<summary>Tip</summary>
+<p>If you are using <code>curl</code> for making requests, you can pass your client_id and client_secret by format</p>
+<p><code>-u "&lt;CLIENT_ID&gt;:&lt;CLIENT_SECRET&gt;"</code></p>
+<p>It is the same for passing <code>Authorization</code> header explicitly:</p>
+<p><code>-H "Authorization: Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==</code></p>
+</details>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    curl -v -X POST <span class="s2">&quot;https://api.iumi.cash/api/v1/oauth/token&quot;</span> <span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    -u <span class="s2">&quot;&lt;CLIENT_ID&gt;:&lt;CLIENT_SECRET&gt;&quot;</span> <span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    -d <span class="s1">&#39; \</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s1">    {</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s1">      &quot;grant_type&quot;: &quot;refresh_token&quot;,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s1">      &quot;refresh_token&quot;: &quot;eRtAQTVyGJedojtUbkMoHWWOdMMl5ujCDk_94gAA21AAInqMcMvhHyuYQ0-5U9bFenYoVKzClY8kGl13WWOdMMl5ujCDk_94gA&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s1">    }</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s1">    &#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>A successful request returns the <code>HTTP 200 OK</code> status code and a JSON response body.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   <span class="s2">&quot;scope&quot;</span>: <span class="s2">&quot;profile email https://api.iumi.cash/api/v1/recurrent&quot;</span>,
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>   <span class="s2">&quot;access_token&quot;</span>: <span class="s2">&quot;A21AAInqMcMvhHyuYQ0xIMSNbl4BIEwkvJ93HukaWZ7o3akLHD-5U9bFC2enYoVKzClY8kGl13TCyKAO25DKYEB1bPR3bRrXg&quot;</span>,
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>   <span class="s2">&quot;token_type&quot;</span>: <span class="s2">&quot;Bearer&quot;</span>,
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>   <span class="s2">&quot;expires_in&quot;</span>: <span class="m">28800</span>,
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   <span class="s2">&quot;refresh_token&quot;</span>: <span class="s2">&quot;eRtAQTVyGJedojtUbkMoHWWOdMMl5ujCDk_94gAA21AAInqMcMvhHyuYQ0-5U9bFenYoVKzClY8kGl13WWOdMMl5ujCDk_94gA&quot;</span>,
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>   <span class="s2">&quot;refresh_token_expires_in&quot;</span>: <span class="m">86400</span>,
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>   <span class="s2">&quot;nonce&quot;</span>: <span class="s2">&quot;2022-04-06T20:10:53ZtyLRwCnLB3eGapVvhCVLScK8IUTqwqz2yUmMEOQbTEg&quot;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h4 id="authorization-code">Authorization code<a class="headerlink" href="#authorization-code" title="Permanent link">&para;</a></h4>
+<p>This flow is used to access API calls by <code>end-user</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To obtain <code>authorization_code</code>, see <a href="../authorize/">authorization code</a>.</p>
+</div>
+<details class="example" open="open">
+<summary>Examples</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Request</label><label for="__tabbed_3_2">Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example shows <code>authorization_code</code> <strong>grant_type</strong> flow. See <a href="#client-credentials">client credentials</a> or <a href="#refresh-token">refresh</a> for other flows.</p>
+</div>
+<details class="tip">
+<summary>Tip</summary>
+<p>If you are using <code>curl</code> for making requests, you can pass your client_id and client_secret by format</p>
+<p><code>-u "&lt;CLIENT_ID&gt;:&lt;CLIENT_SECRET&gt;"</code></p>
+<p>It is the same for passing <code>Authorization</code> header explicitly:</p>
+<p><code>-H "Authorization: Basic e3tjbGllbnRfaWR9fTp7e2NsaWVudF9zZWNyZXR9fQ==</code></p>
+</details>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>    curl -v -X POST <span class="s2">&quot;https://api.iumi.cash/api/v1/oauth/token&quot;</span> <span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    -u <span class="s2">&quot;&lt;CLIENT_ID&gt;:&lt;CLIENT_SECRET&gt;&quot;</span> <span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    -d <span class="s1">&#39; \</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s1">    {</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s1">      &quot;grant_type&quot;: &quot;authorization_code&quot;,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s1">      &quot;redirect_uri&quot;: &quot;https://starlink.com/callback&quot;,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s1">      &quot;code&quot;: &quot;dsfhkj2389HJK93hjkf349hjsdf34rkjhd&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s1">    }</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s1">    &#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>A successful request returns the <code>HTTP 200 OK</code> status code and a JSON response body.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>   <span class="s2">&quot;scope&quot;</span>: <span class="s2">&quot;profile email https://api.iumi.cash/api/v1/recurrent&quot;</span>,
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>   <span class="s2">&quot;access_token&quot;</span>: <span class="s2">&quot;A21AAInqMcMvhHyuYQ0xIMSNbl4BIEwkvJ93HukaWZ7o3akLHD-5U9bFC2enYoVKzClY8kGl13TCyKAO25DKYEB1bPR3bRrXg&quot;</span>,
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>   <span class="s2">&quot;token_type&quot;</span>: <span class="s2">&quot;Bearer&quot;</span>,
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>   <span class="s2">&quot;expires_in&quot;</span>: <span class="m">28800</span>,
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>   <span class="s2">&quot;refresh_token&quot;</span>: <span class="s2">&quot;eRtAQTVyGJedojtUbkMoHWWOdMMl5ujCDk_94gAA21AAInqMcMvhHyuYQ0-5U9bFenYoVKzClY8kGl13WWOdMMl5ujCDk_94gA&quot;</span>,
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>   <span class="s2">&quot;refresh_token_expires_in&quot;</span>: <span class="m">86400</span>,
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>   <span class="s2">&quot;nonce&quot;</span>: <span class="s2">&quot;2022-04-06T20:10:53ZtyLRwCnLB3eGapVvhCVLScK8IUTqwqz2yUmMEOQbTEg&quot;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-10-18T04:37:30+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-10-18</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-10-18T04:37:30+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-10-18</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../authorize/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Authorization code request" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Authorization code request
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../orders/" class="md-footer__link md-footer__link--next" aria-label="Next: Orders" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Orders
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.instant", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "content.code.annotate", "content.tooltips", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../assets/js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
