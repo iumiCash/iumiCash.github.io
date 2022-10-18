@@ -3,13 +3,20 @@
 A `Vendor` is a third-party system integrated with iumiCash for the purpose of using iumiCash as one of the payment methods.
 
 
-Instructions on how to implement iumiCash as a payment method:
+How to integrate with iumiCash and use iumiCash as a payment method:
+* Apply to a iumiCash representative to get registered as a vendor. 
 
-* Get `client_id`, `client_secret` from iumiCash by applying to a iumiCash representative.
+* Obtain `client_id`, `client_secret` credentials and API URL's from iumiCash.
 
-* *(Optional)* Request a iumiCash representative to apply `Verified` status to the vendor’s account.
+* Get whitelisted by iumiCash to access its sandbox API instance.
 
-* To create order, see flow diagrams: [One-Time Payment][one_time_diagrams] / [Recurrent Payment][recurrent_diagram].
+* Test integration by exchanging data and queries with iumiCash sandbox instance.
+
+* *(Optional)* Request iumiCash to apply `Verified` status to the vendor’s account.
+
+* Get whitelisted by iumiCash to access its production API instance.
+
+* Start creating orders as per the flow diagram (see [One-Time Payment][one_time_diagrams]).
 
 [one_time_diagrams]: ../diagrams/onetime.md
 [recurrent_diagram]: ../diagrams/recurrent.md
