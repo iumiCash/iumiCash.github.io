@@ -3,7 +3,7 @@
 A `Vendor` is a third-party system integrated with iumiCash for the purpose of using iumiCash as one of the payment methods offered to the end-users.
 
 
-The following are the major steps required to integrate with iumiCash and start use iumiCash as a payment method:
+The following are the major steps required to integrate with iumiCash and start using iumiCash as a payment method:
 
 * Apply to a iumiCash representative to get registered as a vendor. 
 
