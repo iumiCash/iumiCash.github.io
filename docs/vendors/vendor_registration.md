@@ -3,7 +3,7 @@
 ## Registration
 
 To use the iumiCash REST API, the vendor must first register by applying to a iumiCash representative. 
-After registration, the vendor will receive a pair of `client_id` and `client_secret` credentials as well as API URL.
+After registration, the vendor will receive a pair of `client_id` and `client_secret` credentials as well as the API URL.
 
 ## Whitelisting
 
