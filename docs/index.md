@@ -8,4 +8,4 @@ To get started with  iumiCash REST API, please contact iumiCash representatives 
 
 Administrators of the third-party systems are required to provide the details of their systems to get whitelisted by iumiCash for API integration to function properly.
 
-[introduction to vendors]: ../vendors/index.md
+[introduction to vendors]: vendors/index.md
