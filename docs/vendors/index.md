@@ -17,7 +17,7 @@ The following are the major steps required to integrate with iumiCash and start 
 
 * Get whitelisted by iumiCash to access its production API instance.
 
-* Start creating orders as per the flow diagram (see [One-Time Payment][one_time_diagrams]).
+* Start creating orders as per the flow diagram. see [One-time payment][one_time_diagrams] for more information.
 
 [one_time_diagrams]: ../diagrams/onetime.md
 [recurrent_diagram]: ../diagrams/recurrent.md
